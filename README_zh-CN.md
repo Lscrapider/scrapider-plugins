@@ -31,7 +31,7 @@
 
 ## 使用方式
 
-通过所用 coding agent 的 Skill 安装与调用方式使用本仓库。指令正文和参考资料面向通用 coding agent；各宿主的发现、调用和可用能力以其实际支持为准。本仓库同时是一个插件市场：在 ZCode 或 Claude Code 中将 `https://github.com/Lscrapider/scrapider-plugins` 添加为插件市场并安装 `scrapider-guidelines` 插件，即可获得此 Skill 及五个协作角色 Agent；可选的 `scrapider-capabilities` 插件会注册推荐的 MCP 服务（Context7 文档查询、Codegraph 代码索引），宿主已有这些服务的请勿安装。以下示例使用 Codex 的调用语法：
+通过所用 coding agent 的 Skill 安装与调用方式使用本仓库。指令正文和参考资料面向通用 coding agent；各宿主的发现、调用和可用能力以其实际支持为准。本仓库同时是一个插件市场：在 ZCode 或 Claude Code 中将 `https://github.com/Lscrapider/scrapider-plugins` 添加为插件市场并安装 `scrapider-guidelines` 插件，即可获得此 Skill 及六个协作角色 Agent；可选的 `scrapider-capabilities` 插件会注册推荐的 MCP 服务（Context7 文档查询、Codegraph 代码索引），宿主已有这些服务的请勿安装。以下示例使用 Codex 的调用语法：
 
 ```text
 Use $scrapider-guidelines to implement this Spring Boot change.
@@ -111,7 +111,7 @@ AGENTS.md 编写流程只修改指定的说明文件，保留项目惯例，不�
     │   │   └── icon.png
     │   ├── commands/            # 显式规范审查命令
     │   │   └── scrapider-review.md
-    │   ├── agents/              # 五个协作角色定义
+    │   ├── agents/              # 六个协作角色定义
     │   └── skills/
     │       └── scrapider-guidelines/
     │           ├── SKILL.md

@@ -315,6 +315,7 @@ acceptance does not make every other role a leaf agent.
 | Role | Responsibility |
 | --- | --- |
 | [scrapider-explorer](../../../../agents/scrapider-explorer.md) | Read-only investigation and concise evidence. |
+| [scrapider-solution-expert](../../../../agents/scrapider-solution-expert.md) | Independent technical proposal assessment. |
 | [scrapider-developer](../../../../agents/scrapider-developer.md) | Implementation and verification. |
 | [scrapider-code-reviewer](../../../../agents/scrapider-code-reviewer.md) | Read-only functional correctness and regression review. |
 | [scrapider-standards-reviewer](../../../../agents/scrapider-standards-reviewer.md) | Read-only engineering standards review. |

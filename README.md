@@ -31,7 +31,7 @@ Engineering guidelines for coding agents working in Scrapider projects. This reu
 
 ## Usage
 
-Use your coding agent's skill installation and invocation mechanisms. The instructions and references target coding agents generally; discovery, invocation, and available capabilities depend on the host. This repository also works as a plugin marketplace: in ZCode or Claude Code, add `https://github.com/Lscrapider/scrapider-plugins` as a plugin marketplace and install the `scrapider-guidelines` plugin to get the skill together with its five role agents. The optional `scrapider-capabilities` plugin registers the recommended MCP servers (Context7 docs lookup, Codegraph code intelligence) for hosts that do not already have them. These examples use Codex invocation syntax:
+Use your coding agent's skill installation and invocation mechanisms. The instructions and references target coding agents generally; discovery, invocation, and available capabilities depend on the host. This repository also works as a plugin marketplace: in ZCode or Claude Code, add `https://github.com/Lscrapider/scrapider-plugins` as a plugin marketplace and install the `scrapider-guidelines` plugin to get the skill together with its six role agents. The optional `scrapider-capabilities` plugin registers the recommended MCP servers (Context7 docs lookup, Codegraph code intelligence) for hosts that do not already have them. These examples use Codex invocation syntax:
 
 ```text
 Use $scrapider-guidelines to implement this Spring Boot change.
@@ -115,7 +115,7 @@ The [coding workflow](plugins/scrapider-guidelines/skills/scrapider-guidelines/S
     │   │   └── icon.png
     │   ├── commands/            # explicit standards-review command
     │   │   └── scrapider-review.md
-    │   ├── agents/              # five collaboration role definitions
+    │   ├── agents/              # six collaboration role definitions
     │   └── skills/
     │       └── scrapider-guidelines/
     │           ├── SKILL.md

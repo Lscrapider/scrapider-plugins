@@ -86,6 +86,7 @@ primary agent within the delegation boundaries of its definition.
 | Responsibility | Role type | Expected delivery |
 | --- | --- | --- |
 | Code investigation | `scrapider-explorer` | Read-only evidence, key locations, and unresolved questions. |
+| Technical proposal assessment | `scrapider-solution-expert` | Overall assessment, key issues, risks, and open verification items. |
 | Code implementation | `scrapider-developer` | Bounded changes, verification results, and material remaining risks. |
 | Work outside specialist roles | `scrapider-generalist` | The assigned result without duplicating a specialist's scope. |
 | Engineering standards review | `scrapider-standards-reviewer` | Read-only, evidence-backed violations of applicable engineering rules. |
