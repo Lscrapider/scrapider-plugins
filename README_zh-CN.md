@@ -26,7 +26,7 @@
 | Python | 包与模块的组织方式。 |
 | Android Kotlin 与 Jetpack Compose | UI 状态、数据映射、异常处理与 Compose 架构。 |
 | Android UI 实现 | 面向设计稿还原和产品 UI 设计的补充指导。 |
-| 规范审查 | 完整的只读一致性审查流程，可用 JetBrains 检查脚本通道执行机械检查。 |
+| 规范审查 | 完整的只读一致性审查流程，包含本地机械检查。 |
 | 项目 AGENTS.md | 帮助作者组织清晰、有层次的项目说明，在原有章节中按需更新能力组合、协作等内容。 |
 
 ## 使用方式
@@ -71,7 +71,7 @@ AGENTS.md 编写流程只修改指定的说明文件，保留项目惯例，不�
 | 输入保证、校验归属、异常处理 | [校验与边界](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/validation-and-boundaries.md)，涉及这些决策时加载。 |
 | 审查适用条件、调度、只读流程与报告 | [规范审查](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/standards-review.md)，明确要求审查或改动可能跨越审查边界时加载。 |
 | Git 操作授权与提交信息格式 | [Git 操作与提交](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/git-commits.md)，执行任何 Git 状态变更前加载。 |
-| 规范检查脚本库 | [Inspection Scripts](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/inspection-scripts.md)，指派的规范审查者在 JetBrains 检查通道可用时加载；显式维护、适配或安装脚本库时也加载。 |
+| 规范检查脚本库 | [Inspection Scripts](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/inspection-scripts.md)，Java 脚本化审查及检查库维护时加载。 |
 | 项目说明与可选能力组合 | [AGENTS.md Authoring](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/project/agents-md-authoring.md) 是编写请求的入口，再按条件进入能力推荐、已选能力示例、角色定义，以及另行请求的安装初始化流程。 |
 | 技术栈专用职责 | 先读适用的 [Spring Boot](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/java/spring-boot-backend.md)、[Python](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/python/python-code-organization.md) 或 [Android](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/android/android-kotlin-compose.md) 基线，再按其场景条件读取下游参考。 |
 
@@ -124,10 +124,11 @@ AGENTS.md 编写流程只修改指定的说明文件，保留项目惯例，不�
     │           │   ├── python/
     │           │   └── shared/
     │           └── scripts/
-    │               ├── inspection_hosts.mjs # 宿主 MCP 配置发现
-    │               ├── inspection_mcp.mjs # MCP HTTP/SSE 连接
-    │               ├── run_inspection.mjs # Git 范围、本地脚本与 JetBrains MCP
-    │               └── inspections/
+    │               ├── run_inspection.mjs # Git 范围与精简本地检查
+    │               ├── inspection_parser.mjs # 解析器准备与缓存
+    │               ├── inspection_rules_*.mjs # Java 与 Python 规则
+    │               ├── package.json
+    │               └── package-lock.json # 固定版本的解析器依赖
     └── scrapider-capabilities/   # 可选 MCP 组合：context7 + codegraph
         ├── .claude-plugin/
         │   └── plugin.json
@@ -141,9 +142,7 @@ AGENTS.md 编写流程只修改指定的说明文件，保留项目惯例，不�
 实际用量、质量复核、限制和方案选择，也提供可核对的
 [逐次指标](.research/2026-10-18-retrieval-token-benchmark/metrics.csv)。
 [12 次 Serena 补测](.research/2026-10-18-serena-incremental-benefit/REPORT.md) 记录去重修复、预先固定的评分、
-重复对照结果，以及未实际调用的可选工具无法归因收益这一限制。后续归档记录了近期功能背后的评估：机械检查通道对应的
-[inspection.kts 规则库](.research/2026-10-24-inspection-kts-rule-library/REPORT.md)、外部库文档服务与 IDE 工具面推荐对应的
-[JetBrains MCP 与 Context7 能力试点](.research/2026-10-24-jetbrains-context7-capability-pilot/REPORT.md)。`.research/` 供浏览仓库的开发者查阅，
+重复对照结果，以及未实际调用的可选工具无法归因收益这一限制。`.research/` 供浏览仓库的开发者查阅，
 不进入插件载荷；Skill 的加载路由也不引用这些记录。
 
 ## 贡献

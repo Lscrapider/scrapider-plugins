@@ -3,3 +3,4 @@
 *.log
 /.serena/
 /AGENTS.md
+/plugins/scrapider-guidelines/skills/scrapider-guidelines/scripts/node_modules/

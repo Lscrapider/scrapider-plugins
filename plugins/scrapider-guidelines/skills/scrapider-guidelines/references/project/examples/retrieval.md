@@ -5,7 +5,8 @@ Choose a primary indexed retrieval profile only when recurring relationship or s
 Each fenced block is a complete scenario sample containing one or more peer capability entries. Include a whole sample only when its scenario is selected, and leave alternatives out of `AGENTS.md`.
 
 Serena scenarios apply only when the author explicitly selected it; do not add Serena to the default
-Codegraph and IDE workflow. Use available IDE and local dependency evidence for symbol gaps first.
+Codegraph workflow. Use repository source, build metadata, or local dependency artifacts for symbol
+gaps first.
 
 ## Index
 

@@ -146,8 +146,7 @@ An optional backend, adapter, or integration of a selected tool is not a separat
 capability. Preserve that option and the tool's adopted operations in its own entry; do not promote
 the backend name to another tool or add preconditions from an unselected combination example.
 Current author choices in the conversation take precedence over an older file's capability list.
-Carry every confirmed choice into delegated authoring and verification inputs; an older backend
-mention must not hide or demote a separately selected JetBrains IDE MCP capability.
+Carry every confirmed choice into delegated authoring and verification inputs.
 
 When rebuilding, convert capability prose to these fields without changing its meaning. Keep
 cooperating capabilities in the existing list or table, combining the selected design pair as above.
@@ -278,10 +277,7 @@ or an author choice, and require a confirmed collaboration choice before emittin
 Use the compact role table for selected collaboration; do not move roles into tool entries.
 Keep built-in standards-review rules with the skill, without adding duplicate triggers or an
 unselected dual-review policy. Keep unselected alternatives in the recommendation conversation.
-Check the result against the complete confirmed capability selection, not just the old file. For a
-selected JetBrains IDE MCP surface, preserve the adopted semantic-refactoring, diagnostics,
-compilation, formatting, and dependency-declaration scenarios within the selected setup allowlist;
-a backend mention or a generic "IDE checks" summary does not cover that entry.
+Check the result against the complete confirmed capability selection, not just the old file.
 
 Compare meaning, headings, and rule separation against the agreed baseline. Check that useful detail
 and distinct responsibilities survived. Account for every changed or deleted heading and rule against

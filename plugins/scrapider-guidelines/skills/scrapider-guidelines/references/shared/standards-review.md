@@ -31,18 +31,9 @@ separate review points. After fixes, re-check the fixed points without repeating
 - Otherwise, dispatch exactly one read-only standards reviewer when subagents are available and
   permitted for the request. This skill launches no other review roles. If delegation is unavailable
   or disallowed, review directly and state that it was performed by the primary agent.
-- Supply the repository path, exact scope or diff range, relevant request, known project instruction
-  paths, and the exact skill root used for the task. Do not supply conclusions or expected findings.
-- For Java scope, supply the IDE-open project root and exact review scope, and require an attempt with
-  the local [inspection runner](../../scripts/run_inspection.mjs) after loading the procedure from the
-  same skill root. Do not gate the attempt on the host catalog. If discovery fails, is ambiguous, or
-  is unsupported, allow a retry with `--mcp-url` only from the current host's effective, permitted
-  configuration; do not read another client's config, guess ports, or bypass disabled, denied,
-  unapproved, or authentication-failed connections. For WorkBuddy cross-scope conflicts, request an
-  explicit connection choice. If no permitted endpoint is available, report the command, error, and
-  missing information instead of skipping. A verified no-Java or empty scope may be reported as
-  `skipped` with its reason. For `error` or `incomplete`, require the exact command, concrete error,
-  uncovered scope, and manual review; do not report the scripted inspection as passed.
+- Supply the repository path, project root if different, exact scope or diff range, relevant request,
+  known project instruction paths, and the exact skill root used for the task. Do not supply
+  conclusions or expected findings.
 - Use this document as the sole standards-review procedure and output contract. The reviewer returns
   the report to the primary agent, who evaluates it alongside other evidence.
 
@@ -55,8 +46,8 @@ separate review points. After fixes, re-check the fixed points without repeating
 - Do not perform a general business-logic, correctness, syntax, security, or test review. Report
   those concerns only when they prove an explicit Scrapider rule violation, such as Business
   Contracts, Validation and Boundaries, or Coding Workflow.
-- Remain read-only. Do not modify files, Git state, dependencies, services, issues, or external
-  systems. Review large scopes in multiple passes yourself.
+- Keep the reviewed project, services, issues, and external systems read-only. The bundled checker
+  may populate its parser cache outside the project. Review large scopes in multiple passes yourself.
 
 ## Review Procedure
 
@@ -65,11 +56,17 @@ separate review points. After fixes, re-check the fixed points without repeating
    repository state make it unambiguous; otherwise return `Blocked`.
 2. Inspect the complete scoped diff, including relevant untracked files, plus only the surrounding
    code, callers, tests, configuration, and documentation needed to verify a potential violation.
-3. Check each applicable normative instruction against evidence and project exceptions. Record each
+3. For existing Java files in scope, load [Inspection Scripts](inspection-scripts.md) from the same
+   skill root and run its bundled checker from the project root. Use Git discovery when it matches
+   the review scope, or pass the exact Java files otherwise. Confirm reported candidates against the
+   source and applicable rules. If the scan is incomplete or fails, report the exact command, error,
+   and uncovered files or rules, then review that scope manually. Report `skipped` with the reason
+   when there are no existing Java files to scan.
+4. Check each applicable normative instruction against evidence and project exceptions. Record each
    as not applicable, satisfied, violated, or unverifiable; do not substitute a remembered shortlist.
    Unless the user requested a broader audit, report only issues introduced or exposed by the scoped
    change.
-4. Return the report using the contract below. Do not decide how the primary agent should reconcile
+5. Return the report using the contract below. Do not decide how the primary agent should reconcile
    it with other evidence or reviewers.
 
 ## Finding Calibration

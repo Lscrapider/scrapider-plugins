@@ -1,0 +1,12 @@
+{
+  "name": "scrapider-guidelines-inspection",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@ast-grep/napi": "0.51.0",
+    "tree-sitter-java": "0.23.5"
+  }
+}

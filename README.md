@@ -26,7 +26,7 @@ Engineering guidelines for coding agents working in Scrapider projects. This reu
 | Python | Package and module organization. |
 | Android Kotlin & Jetpack Compose | UI state, data mapping, error handling, and Compose architecture. |
 | Android UI implementation | Additional guidance for design-driven UI and product UI work. |
-| Standards review | A complete, read-only conformance-review workflow, with an optional JetBrains inspection-script channel for mechanical checks. |
+| Standards review | A read-only conformance-review workflow with local mechanical checks. |
 | Project AGENTS.md | Help authors select clear, structured project instructions and refresh existing sections with relevant capability combinations and collaboration guidance. |
 
 ## Usage
@@ -71,7 +71,7 @@ The main [SKILL.md](plugins/scrapider-guidelines/skills/scrapider-guidelines/SKI
 | Input guarantees, validation ownership, and exception handling | [Validation and Boundaries](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/validation-and-boundaries.md), loaded when those decisions are in scope. |
 | Review applicability, dispatch, read-only procedure, and report | [Standards Review](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/standards-review.md), loaded for explicit reviews or changes that may cross its review boundaries. |
 | Git authorization and commit message format | [Git Operations and Commits](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/git-commits.md), loaded before any Git state mutation. |
-| Inspection script library | [Inspection Scripts](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/inspection-scripts.md), loaded by the assigned standards reviewer when the JetBrains inspection channel is available; also loaded for explicit library maintenance, adaptation, or installation. |
+| Inspection script library | [Inspection Scripts](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/shared/inspection-scripts.md), loaded for scripted Java review and inspection-library maintenance. |
 | Project instructions and optional capability combinations | [AGENTS.md Authoring](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/project/agents-md-authoring.md), the entry point for authoring requests; it routes to recommendations, selected examples, role definitions, and separately requested setup. |
 | Technology-specific responsibilities | Start with the applicable [Spring Boot](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/java/spring-boot-backend.md), [Python](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/python/python-code-organization.md), or [Android](plugins/scrapider-guidelines/skills/scrapider-guidelines/references/android/android-kotlin-compose.md) baseline, then follow its matching scenario routes. |
 
@@ -128,10 +128,11 @@ The [coding workflow](plugins/scrapider-guidelines/skills/scrapider-guidelines/S
     │           │   ├── python/
     │           │   └── shared/
     │           └── scripts/
-    │               ├── inspection_hosts.mjs # host MCP configuration discovery
-    │               ├── inspection_mcp.mjs # MCP HTTP/SSE connection
-    │               ├── run_inspection.mjs # Git scope, local scripts, JetBrains MCP
-    │               └── inspections/
+    │               ├── run_inspection.mjs # Git scope and concise local inspection
+    │               ├── inspection_parser.mjs # parser setup and cache
+    │               ├── inspection_rules_*.mjs # Java and Python rules
+    │               ├── package.json
+    │               └── package-lock.json # locked parser dependencies
     └── scrapider-capabilities/   # optional MCP bundle: context7 + codegraph
         ├── .claude-plugin/
         │   └── plugin.json
@@ -146,10 +147,7 @@ records the tested scenarios, measured usage, quality review, limitations, and r
 choices. Its [per-run metrics](.research/2026-10-18-retrieval-token-benchmark/metrics.csv) are
 available for inspection. The [12-run Serena follow-up](.research/2026-10-18-serena-incremental-benefit/REPORT.md)
 records the repaired response rendering, fixed scoring, repeated comparisons, and limits on attributing
-benefits to an optional tool that workers did not invoke. Later archives record the evaluations behind
-recent features: the [inspection-script rule library](.research/2026-10-24-inspection-kts-rule-library/REPORT.md)
-behind the mechanical-check channel, the [JetBrains MCP and Context7 capability pilot](.research/2026-10-24-jetbrains-context7-capability-pilot/REPORT.md)
-behind the external library docs service and IDE tool surface recommendations.
+benefits to an optional tool that workers did not invoke.
 The `.research/` directory is for developers browsing this repository; it stays out of the
 plugin payload, and the skill's loading routes do not reference it.
 

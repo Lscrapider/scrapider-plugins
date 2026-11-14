@@ -34,7 +34,7 @@ Use these profiles as a starting point, not a fixed menu or a requirement to ado
 | --- | --- | --- |
 | Localized changes | **Lightweight:** the project's selected coding guidance without additional retrieval or planning capabilities. | Use when paths or identifiers locate the affected implementation and no additional capability is needed. |
 | Cross-module changes | **Relationship-aware:** Codegraph + the chosen coding guidance. | Select under the [retrieval-profile conditions](#select-one-retrieval-profile). |
-| Unresolved symbol or dependency facts | Use the open IDE or local dependency artifacts alongside the selected retrieval tools and coding guidance. | Retain a Serena route only when explicitly selected under the [Serena conditions](#serena-with-language-servers). |
+| Unresolved symbol or dependency facts | Use repository source, build metadata, and local dependency artifacts alongside the selected retrieval tools and coding guidance. | Retain a Serena route only when explicitly selected under the [Serena conditions](#serena-with-language-servers). |
 
 Name the actual coding guidance in each proposal. Preserve existing project standards; offer Scrapider
 Guidelines as an optional coding layer for code changes or standards review, without inferring adoption
@@ -49,9 +49,9 @@ retrieval profile does not require either layer. Do not turn the profiles into m
 
 Classify a capability by its exposed operations; do not add workflow steps solely for its packaging.
 Offer collaboration separately and record it only after an author choice, including a choice already
-established by the source project instructions. Selected subagent roles belong in that section,
-including reviewers supported by IDE tools; they are not tool capabilities. A skill's built-in
-standards review does not by itself select a collaboration module or a second reviewer.
+established by the source project instructions. Selected subagent roles belong in that section; they
+are not tool capabilities. A skill's built-in standards review does not by itself select a collaboration
+module or a second reviewer.
 Omit routine host operations from proposals, capability names, and generated descriptions.
 
 | Type | Responsibility | Examples |
@@ -107,8 +107,8 @@ do not copy the internal procedure into an entry without a request for project-l
 Do not recommend Serena by default. Preserve it only when the author explicitly selects it for
 recurring definition, implementation, or reference queries that remain
 unresolved by existing project evidence. Verify the project root, required toolchains, query
-support, and host memory capacity before adoption. Prefer an already-open IDE or local dependency
-artifacts when they resolve that gap.
+support, and host memory capacity before adoption. Prefer repository source, build metadata, or local
+dependency artifacts when they resolve that gap.
 
 Skip Serena for answered questions, ordinary text or configuration searches, unsupported languages,
 or insufficient host memory. If a query returns no matches or excessive results, refine its path or
@@ -129,36 +129,6 @@ A docs service such as context7 supplies external library version and API facts.
 - On conflict, the project's declared version (`pom.xml` / `package.json` / lockfile) wins over any
   doc snippet. Verify language-level correctness by compilation. If the service is unavailable or
   lacks version-matched evidence, consult official library documentation and report any unresolved fact.
-
-### IDE tool surface on an open project
-
-A built-in IDE MCP surface (such as a JetBrains IDE server) applies only to the project the IDE has
-open, and every call must explicitly target that project. Within that scope it serves the edit loop,
-not general retrieval: **retrieval questions stay on the selected retrieval profile. Semantic rename
-and post-edit formatting use the IDE in the scenarios below.**
-
-- **Semantic rename**: use IDE refactoring to rename variables, fields, methods, classes, or other
-  code symbols, especially when bindings are ambiguous or reflection strings may refer to them.
-  For an unambiguous rename, a text edit with a reference sweep is acceptable when the project's
-  tool-routing contract permits it. Review the full rename diff, including string literals and
-  comments that the IDE may also update; verify reflective uses separately.
-- **Per-file quick diagnostics**: check the edited file for diagnostics; retain model review for
-  design and security findings.
-- **Incremental single-file build**: check compilation after a file edit when the IDE supports it.
-- **Third-party symbol facts**: inspect the resolved artifact and declaration when dependency
-  versions or signatures are ambiguous.
-- **Reformat after writing**: use the IDE formatter after file edits as a best-effort finishing
-  step. Follow project conventions, including existing files when no code-style configuration exists;
-  formatter failure does not block delivery.
-
-This workflow excludes debugger and run-configuration tools; enable only its ten tools through
-the [explicit setup allowlist](capability-setup.md#jetbrains-ide-tool-surface).
-Do not use this surface for large-file slicing.
-
-Scripted standards checks belong to [scrapider-standards-reviewer](../../../../agents/scrapider-standards-reviewer.md).
-Its role definition loads the inspection library and handles coverage and candidate confirmation;
-do not turn that internal mechanism into a main-agent procedure in project `AGENTS.md`, or infer
-adoption of a collaboration section from the availability of IDE checks.
 
 ### Alternatives for a Specific Unmet Need
 
@@ -185,7 +155,6 @@ Add a layer only when its selection condition below is met; do not adopt the tab
 | Chosen retrieval recipe + an AST symbol extractor | A symbol body remains unlocated by existing tools in a supported language; evaluate `syphon1c/code-scale-mcp`. | Verify package identity and extraction support. Skip the extractor when existing evidence already supplies the required body. |
 | Selected MCP services behind a schema gateway | The host eagerly loads selected services' tool definitions and lacks deferred discovery; evaluate MCP Slim (`dopatools/mcp-slim`). | Verify discovery and proxy support, including which downstream connections the gateway owns. Retain direct MCP connections when proxying is unsupported. |
 | Chosen retrieval profile + an external library docs service (such as context7) | Apply the [external library docs conditions](#external-library-docs-service-context7). | Keep version selection, local signature checks, identity verification, and conflict handling within that section's boundaries. |
-| Chosen retrieval profile + an IDE tool surface (such as a JetBrains IDE built-in MCP) | Apply the [IDE operation conditions](#ide-tool-surface-on-an-open-project). | Preserve that section's project scope, semantic-operation routing, and formatter policy. |
 
 Before replacing or stacking services, verify package identity, required operations, and overlapping
 responsibilities; leave unverified candidates out of the active workflow.
