@@ -19,13 +19,14 @@ distinct responsibilities and omit routine host operations and generic fallback 
 | RTK command-output filtering | [RTK](retrieval.md#a7-rtk) | [RTK + Codegraph](retrieval.md#a8-codegraph-with-rtk); [RTK + gateway](retrieval.md#a11-codegraph-with-rtk-and-mcp-slim) |
 | MCP Slim and host tool discovery | [Gateway with selected services](retrieval.md#a9-mcp-slim-schema-gateway-with-selected-mcp-services) | [Gateway + Codegraph](retrieval.md#a10-codegraph-with-mcp-slim-schema-gateway); [gateway + RTK](retrieval.md#a11-codegraph-with-rtk-and-mcp-slim) |
 | Context7 | [External library docs](library-docs.md#context7) | [Graph + external docs](library-docs.md#codegraph-and-context7) |
+| `scrapider-write-plan` and `scrapider-execute-plan` | [Use as a pair for a Scrapider execution plan](planning-and-collaboration.md#scrapider-planning-and-execution) | Pair with the selected engineering guidance and any distinct requirements or evidence workflow. |
 | Planning with Files | [Planning choices](planning-and-collaboration.md#planning) | [Durable notes + one execution plan](planning-and-collaboration.md#planning) |
 | OpenSpec | [Specification owner](planning-and-collaboration.md#planning) | [OpenSpec + distinct investigation notes](planning-and-collaboration.md#planning) |
 | Superpowers planning skills | [Paired writing-plans and executing-plans, only where permitted](planning-and-collaboration.md#planning) | Keep the pair as one plan owner; use a separate notes layer only for distinct evidence. |
 | GitHub Spec Kit | [Full specification workflow](planning-and-collaboration.md#planning) | Implementation follows its artifacts; select it instead of another owner for the same specification. |
-| Scrapider and existing coding standards | [Separate coding choices](design-and-coding.md#coding-standards) | [Project workflows](#complete-project-workflow-choices); [web design and coding](design-and-coding.md#web-ui-design-and-implementation) |
+| `scrapider-guidelines` and existing coding standards | [Separate coding choices](design-and-coding.md#coding-standards) | [Project workflows](#complete-project-workflow-choices); [web design and coding](design-and-coding.md#web-ui-design-and-implementation) |
 | frontend-design and impeccable | [Direction-only or refinement-only](design-and-coding.md#web-ui-design-and-implementation) | [New direction + refinement + coding; existing UI + coding](design-and-coding.md#web-ui-design-and-implementation) |
-| compose-expert and Scrapider Android guidance | [Separate Android choices](design-and-coding.md#android-and-compose) | [Compose specialist + Android standards](design-and-coding.md#android-and-compose) |
+| compose-expert and `scrapider-guidelines` | [Separate Android choices](design-and-coding.md#android-and-compose) | [Compose specialist + Android standards](design-and-coding.md#android-and-compose) |
 | Author-selected Apple Design, Product Design, and ImageGen | [Individual extensions](design-and-coding.md#author-selected-android-design-extensions) | [Named design, evidence, implementation, and asset combinations](design-and-coding.md#author-selected-android-design-extensions) |
 
 ## Complete Project Workflow Choices

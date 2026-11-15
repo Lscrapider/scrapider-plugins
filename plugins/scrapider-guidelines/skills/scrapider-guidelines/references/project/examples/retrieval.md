@@ -111,7 +111,7 @@ with task-specific calls conditional; they do not all have to run on every task.
   - **Scenario**: Unresolved call paths, dependencies, or impact questions covered by the project index.
   - **Boundary**: Codegraph supplies relationship evidence. Coding policy remains with project instructions and the selected engineering guidance.
 
-- **Scrapider Guidelines** — Engineering rules for implementation and review.
+- **`scrapider-guidelines`** — Engineering rules for implementation and review.
   - **Scenario**: Use the selected Scrapider standard when implementing, refactoring, debugging, or reviewing project code; follow its built-in standards-review applicability and dispatch rules.
   - **Boundary**: Retrieval establishes current code facts; Scrapider guides changes and review without overriding explicit project contracts or user instructions.
 ```
@@ -129,7 +129,7 @@ Use this scenario only for an explicit Serena selection; it is not a default rec
   - **Scenario**: The author explicitly selected Serena, recurring symbol questions remain after the selected graph route, and language support and resource capacity are verified.
   - **Boundary**: Serena fills only the unresolved binding or reference gap; it does not repeat answered graph queries or replace the selected coding rules.
 
-- **Scrapider Guidelines** — Engineering rules for the resulting changes.
+- **`scrapider-guidelines`** — Engineering rules for the resulting changes.
   - **Scenario**: Use the selected Scrapider standard when implementing or reviewing project code; follow its built-in standards-review applicability and dispatch rules.
   - **Boundary**: Retrieval services supply evidence; project contracts and Scrapider guidance govern implementation and review.
 ```

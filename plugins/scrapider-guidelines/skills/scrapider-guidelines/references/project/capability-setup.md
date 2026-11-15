@@ -13,6 +13,7 @@ install.
 - [Serena with language servers](#serena-with-language-servers)
 - [CLI tools](#cli-tools)
 - [Skills, plugins, and bundled agents](#skills-plugins-and-bundled-agents)
+- [Scrapider Capabilities MCP bundle](#scrapider-capabilities-mcp-bundle)
 
 ## General Procedure
 
@@ -89,16 +90,22 @@ not run it during [authoring](capability-recommendations.md#planning-and-executi
 
 Skills and plugins install through the host's discovery mechanisms — skill directories or the
 plugin marketplace — and have no per-project initialization. Verify by listing the host's
-available skills or by loading the skill once. Install Scrapider Guidelines itself at the user or
-project scope the host defines.
+available skills or by loading the skill once.
 
-The bundled [collaboration roles](agents-md-authoring.md#bundled-collaboration-roles) are registered
-automatically under the plugin's namespace only in hosts that support plugin-provided agents. When
-loaded as a plain skill, or when the host does not register plugin agents, supply their definitions
-through the host's custom-agent mechanism, preserving each file's `name` and `description`. Verify
-the host actually offers a role before a workflow depends on delegation; when it does not, keep the
-responsibilities with the primary agent per the authoring rules and leave the registration step
-with the author.
+For a setup that uses the plugin, install `scrapider-guidelines` at the selected scope supported
+by the target host and verify the adopted skills. For its
+[planning workflow](examples/planning-and-collaboration.md#scrapider-planning-and-execution),
+verify that both skills are visible and that the session supports and authorizes subagent
+delegation. In Claude Code, the optional explicit review entry point is
+`/scrapider-guidelines:scrapider-review`. The engineering skill also exposes the standards-review
+workflow through a direct review request.
+
+Verify callable names for the bundled [collaboration roles](agents-md-authoring.md#bundled-collaboration-roles)
+on hosts that register plugin agents. You can also assign a bundled definition to an authorized native
+subagent or register it through the host's custom-agent mechanism, preserving its `name` and
+`description`. For ordinary collaboration, apply the authoring fallback when a role cannot be
+mapped. For plan execution, report unavailable required delegation or review as a blocker for the
+affected step.
 
 Use the target host's supported agent-definition format. A role name, the host's registration or
 agent-type field, and a model ID are separate concepts; do not derive one from another or assume
@@ -109,3 +116,11 @@ override; do not insert a sample model ID or a literal `inherit` unless the host
 Role definitions may narrow their tool surface with a `tools` list; without one, the tools available
 to a delegated role come from the host session. Set up the capabilities the project adopted with the
 sections above, then confirm the delegated run can call them.
+
+## Scrapider Capabilities MCP Bundle
+
+The optional `scrapider-capabilities` package for Claude Code and ZCode registers Context7 and
+Codegraph together. Use the bundle when the project selected both services and both need
+registration. Register a single missing service individually. Follow the
+[Codegraph](#codegraph-mcp-and-cli) and [Context7](#external-library-docs-service-context7) setup
+steps for the selected services, including the project index for Codegraph.

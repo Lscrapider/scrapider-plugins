@@ -7,11 +7,33 @@ policies govern each selection.
 
 ## Planning
 
-When a project selects a planning workflow, keep one canonical owner for each formal specification
-and task plan. OpenSpec, GitHub Spec Kit, and the explicitly selected Superpowers plan pair must
-not share ownership of the same artifacts. Do not assume they interoperate. A second
-capability may complement the selected owner only when its responsibility is distinct and all work
-follows one authoritative task record.
+When a change uses a planning workflow, select one authoritative task plan and give each formal
+specification one owner. Add another capability for a distinct responsibility, such as requirements
+or investigation notes. Define what it hands off to the selected plan.
+
+### Scrapider planning and execution
+
+Select the pair for durable handoffs to implementation subagents. Use the ordinary workflow for
+clear local changes that can be delivered directly. Both skills use the same plan when the pair applies.
+See [plan writing](../../../../scrapider-write-plan/SKILL.md) and
+[plan execution](../../../../scrapider-execute-plan/SKILL.md) for the artifact and handoff rules.
+
+When OpenSpec or another selected framework owns the implementation task list, follow that list
+for execution. The Scrapider pair can use an existing specification as requirements when the
+author assigns ownership of the implementation task list to `PLAN.md`.
+
+- **`scrapider-write-plan`** — Prepare or revise a plan for implementation subagents.
+  - **Scenario** Use it when a change needs a durable handoff and the session supports and authorizes
+    subagent delegation.
+  - **Boundary** It prepares the `PLAN.md` that drives execution, adds implementation Briefs for
+    modular plans, and writes `REVIEW.md` when the plan requires a review handoff.
+
+- **`scrapider-execute-plan`** — Execute or resume a Scrapider plan.
+  - **Scenario** Use it when an adopted Scrapider plan is ready to run or resume in a session that
+    supports and authorizes subagent delegation.
+  - **Boundary** It coordinates implementation, verification, integration, and review from the
+    same plan. For modular plans, the primary agent uses `REVIEW.md` to dispatch both functional
+    and standards review.
 
 ### Cross-session evidence with one task plan
 

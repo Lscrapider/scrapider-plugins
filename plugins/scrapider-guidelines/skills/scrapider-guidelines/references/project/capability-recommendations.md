@@ -36,10 +36,10 @@ Use these profiles as a starting point, not a fixed menu or a requirement to ado
 | Cross-module changes | **Relationship-aware:** Codegraph + the chosen coding guidance. | Select under the [retrieval-profile conditions](#select-one-retrieval-profile). |
 | Unresolved symbol or dependency facts | Use repository source, build metadata, and local dependency artifacts alongside the selected retrieval tools and coding guidance. | Retain a Serena route only when explicitly selected under the [Serena conditions](#serena-with-language-servers). |
 
-Name the actual coding guidance in each proposal. Preserve existing project standards; offer Scrapider
-Guidelines as an optional coding layer for code changes or standards review, without inferring adoption
-from this authoring task. Once adopted as the project's standard, make its use conditions explicit in
-its entry and refer to its built-in standards-review rules without copying their procedure.
+Name the actual coding guidance in each proposal. Preserve existing project standards. Offer the
+`scrapider-guidelines` skill as an optional coding layer for code changes or standards review.
+Once adopted as the project's standard, make its use conditions explicit in its entry and refer to
+its built-in standards-review rules without copying their procedure.
 Keep retrieval and coding responsibilities separate.
 
 Add planning and UI capabilities only under their conditions in the sections below; selecting a
@@ -57,9 +57,16 @@ Omit routine host operations from proposals, capability names, and generated des
 | Type | Responsibility | Examples |
 | --- | --- | --- |
 | MCP service | Callable operations that retrieve information or perform actions. | Codegraph, Serena, a semantic search service. |
-| Skill | Task-specific instructions with their own applicability conditions. | Scrapider Guidelines, frontend-design, impeccable. |
-| Plugin | A host integration or distribution that may include skills, tools, commands, or hooks. | Host-specific bundles of skills and MCP tools. |
+| Skill | Task-specific instructions with their own applicability conditions. | `scrapider-guidelines`, `frontend-design`, `impeccable`. |
+| Plugin | A host integration or distribution that may include skills, tools, commands, or hooks. | Scrapider Guidelines, Scrapider Capabilities. |
 | CLI | A program invoked through the shell; integrations may wrap it. | RTK, OpenSpec, Codegraph's CLI. |
+
+In the Scrapider Guidelines plugin, the [engineering skill](../../SKILL.md) covers coding,
+standards review, and `AGENTS.md` authoring. The [planning skills](#planning-and-execution) cover
+durable handoffs and execution. Record the skills the project has adopted. Where the host exposes
+the `scrapider-review` command, it invokes the engineering skill's standards-review workflow.
+For MCP capabilities, record the selected services and keep their registration method in
+[Capability Setup](capability-setup.md).
 
 Verify callable operations in the target host before relying on a capability. Unless the target host
 is specified, retain stable capability names and resolve invocation aliases at use time; do not
@@ -161,12 +168,13 @@ responsibilities; leave unverified candidates out of the active workflow.
 
 ## Planning and Execution
 
-Recommend an additional planning capability only for a concrete need such as cross-session records
-or formal specifications. If none is selected, add no planning capability or default-operation rule
-to `AGENTS.md`. Keep one owner for the same specification and task plan.
+Recommend a planning capability for a concrete need such as a durable implementation handoff,
+cross-session records, or a formal specification. Record it in `AGENTS.md` when the project adopts
+it. Keep one authoritative task plan per change and one owner for each adopted specification.
 
 | Approach | Type and selection condition | Boundary and fallback |
 | --- | --- | --- |
+| [Scrapider planning and execution](examples/planning-and-collaboration.md#scrapider-planning-and-execution) | Paired skills for preparing a durable handoff to implementation subagents and executing or resuming the resulting plan. Both require a session with enabled, authorized subagents. | `scrapider-write-plan` prepares or revises the execution plan. `scrapider-execute-plan` coordinates implementation, verification, integration, and review from that plan. Use the ordinary workflow for clear local changes that can be delivered directly. |
 | Planning with Files | Skill for tasks that must resume plans, findings, and progress across sessions. | Verify host support before relying on plugin or hook integrations. |
 | OpenSpec | CLI plus skills or commands when the project requires reviewable specifications, implementation tasks, and decision archives. | Skip for a short execution plan without a specification or traceability requirement. |
 | Superpowers writing-plans + executing-plans | Two skills used on demand when the user selects them and host and project policy permit them. | Other Superpowers features remain off unless the user explicitly requests them. This limit does not require Superpowers for every plan or prohibit other capabilities. Replace older blanket assignments of design, review, or verification to Superpowers throughout the document. Preserve applicable model and project restrictions. |
@@ -181,8 +189,8 @@ invoke its implementation workflow, or create its plan/specification files.
 
 | Optional combination | Suitable scenario and division of responsibility | Boundary and fallback |
 | --- | --- | --- |
-| frontend-design → impeccable + Scrapider Guidelines | New web UI or an explicitly requested new visual direction. frontend-design establishes direction; impeccable improves hierarchy, interaction states, accessibility, consistency, and polish; Scrapider guides code changes. | Use each part only for work it contributes. Preserve the selected direction during implementation; use the project's design system and available guidance when a skill is absent. |
-| impeccable + Scrapider Guidelines | Local visual or UX improvements to an existing web UI. impeccable guides the UI refinement; Scrapider guides the implementation. | Inherit the existing design language. A new visual direction belongs to the preceding route. Nonvisual logic and API changes do not trigger UI skills. |
-| compose-expert + Scrapider Android guidance | Implementation or review of Compose APIs or UI in an Android project, when compose-expert is available. | Keep the project's architecture and design constraints. If the specialist is unavailable, use the existing [Android Kotlin and Compose guidance](../android/android-kotlin-compose.md). |
+| frontend-design → impeccable + `scrapider-guidelines` | New web UI or an explicitly requested new visual direction. frontend-design establishes direction; impeccable improves hierarchy, interaction states, accessibility, consistency, and polish; Scrapider guides code changes. | Use each part only for work it contributes. Preserve the selected direction during implementation; use the project's design system and available guidance when a skill is absent. |
+| impeccable + `scrapider-guidelines` | Local visual or UX improvements to an existing web UI. impeccable guides the UI refinement; Scrapider guides the implementation. | Inherit the existing design language. A new visual direction belongs to the preceding route. Nonvisual logic and API changes do not trigger UI skills. |
+| compose-expert + `scrapider-guidelines` | Implementation or review of Compose APIs or UI in an Android project, when compose-expert is available. | Keep the project's architecture and design constraints. If the specialist is unavailable, use the existing [Android Kotlin and Compose guidance](../android/android-kotlin-compose.md). |
 
 Match the exposed skill or plugin before use; write only the project's selected routes into `AGENTS.md`.
