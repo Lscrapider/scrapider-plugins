@@ -1,9 +1,9 @@
 {
   "name": "scrapider-guidelines",
-  "version": "0.2.9",
-  "description": "Scrapider engineering guidelines: layered reference routing for Spring Boot, Python, and Android Kotlin, with six collaboration role agents.",
+  "version": "0.2.10",
+  "description": "Scrapider engineering guidelines for Spring Boot, Python, and Android Kotlin, with multi-agent planning and execution skills and six collaboration roles.",
   "description_i18n": {
-    "zh-CN": "Scrapider 工程规范：面向 Spring Boot、Python 与 Android Kotlin 的分层规则路由，包含六个协作角色 Agent。"
+    "zh-CN": "Scrapider 工程规范：面向 Spring Boot、Python 与 Android Kotlin，提供多 Agent 执行计划编写和执行技能，以及六个协作角色。"
   },
   "author": {
     "name": "Lscrapider"

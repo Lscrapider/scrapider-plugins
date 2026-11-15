@@ -6,7 +6,7 @@
 
 [简体中文](README_zh-CN.md) | English
 
-Engineering guidelines for coding agents working in Scrapider projects. This reusable Agent Skill helps agents understand requests, follow project architecture, preserve business contracts within the requested scope, and deliver verified changes with appropriate complexity.
+Engineering guidelines and multi-agent planning workflows for coding agents working in Scrapider projects. The skills help agents follow project architecture, preserve business contracts within the requested scope, and deliver verified changes with appropriate complexity.
 
 ## What it provides
 
@@ -31,7 +31,7 @@ Engineering guidelines for coding agents working in Scrapider projects. This reu
 
 ## Usage
 
-Use your coding agent's skill installation and invocation mechanisms. The instructions and references target coding agents generally; discovery, invocation, and available capabilities depend on the host. This repository also works as a plugin marketplace: in ZCode or Claude Code, add `https://github.com/Lscrapider/scrapider-plugins` as a plugin marketplace and install the `scrapider-guidelines` plugin to get the skill together with its six role agents. The optional `scrapider-capabilities` plugin registers the recommended MCP servers (Context7 docs lookup, Codegraph code intelligence) for hosts that do not already have them. These examples use Codex invocation syntax:
+Use your coding agent's skill installation and invocation mechanisms. The instructions and references target coding agents generally; discovery, invocation, and available capabilities depend on the host. This repository also works as a plugin marketplace: in ZCode or Claude Code, add `https://github.com/Lscrapider/scrapider-plugins` as a plugin marketplace and install the `scrapider-guidelines` plugin to get its skills and six role agents. The optional `scrapider-capabilities` plugin registers the recommended MCP servers (Context7 docs lookup, Codegraph code intelligence) for hosts that do not already have them. These examples use Codex invocation syntax:
 
 ```text
 Use $scrapider-guidelines to implement this Spring Boot change.
@@ -60,6 +60,13 @@ In Claude Code, run the explicit standards review command with its plugin namesp
 Add a scope or paths after the command to narrow the review. Without arguments, it reviews the current working-tree changes.
 
 AGENTS.md authoring writes only the requested instruction file. It preserves project conventions and does not install tools or create configuration or separate agent-definition files.
+
+### Multi-agent execution plans
+
+- [**Write a plan**](plugins/scrapider-guidelines/skills/scrapider-write-plan/SKILL.md) with `$scrapider-write-plan`. Clear local changes use the ordinary workflow. For a durable handoff, write a single `PLAN.md` or a modular `PLAN.md` with implementation Briefs under `.scrapider/plan/YYYY-MM-DD-<feature-name>/` at the project root.
+- [**Execute a plan**](plugins/scrapider-guidelines/skills/scrapider-execute-plan/SKILL.md) with `$scrapider-execute-plan` and the plan path. The caller controls executor count and grouping. For modular work, the primary agent coordinates from `PLAN.md`, hands Brief paths to implementers, and reads the sibling `REVIEW.md` to dispatch the functional and standards reviews after integration. Reviewers return results directly.
+
+Both skills require a session where subagent delegation is available and permitted for the task. Select them only in such a session.
 
 ## How reference routing works
 
@@ -117,6 +124,8 @@ The [coding workflow](plugins/scrapider-guidelines/skills/scrapider-guidelines/S
     │   │   └── scrapider-review.md
     │   ├── agents/              # six collaboration role definitions
     │   └── skills/
+    │       ├── scrapider-write-plan/
+    │       ├── scrapider-execute-plan/
     │       └── scrapider-guidelines/
     │           ├── SKILL.md
     │           ├── agents/

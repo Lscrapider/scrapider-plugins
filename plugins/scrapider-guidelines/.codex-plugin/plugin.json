@@ -1,7 +1,7 @@
 {
   "name": "scrapider-guidelines",
-  "description": "Scrapider engineering guidelines for implementation, refactoring, debugging, reviews, and project AGENTS.md authoring.",
-  "version": "0.2.9",
+  "description": "Scrapider engineering guidelines for implementation, refactoring, debugging, reviews, project AGENTS.md authoring, and multi-agent planning and execution.",
+  "version": "0.2.10",
   "author": {
     "name": "Lscrapider"
   },
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Scrapider Guidelines",
     "shortDescription": "Engineering rules and reviews",
-    "longDescription": "Apply Scrapider engineering guidelines when implementing, refactoring, debugging, or reviewing Spring Boot, Python, and Android Kotlin projects. Includes standards-review guidance and project AGENTS.md authoring workflows.",
+    "longDescription": "Apply Scrapider engineering guidelines when implementing, refactoring, debugging, or reviewing Spring Boot, Python, and Android Kotlin projects. Includes multi-agent planning and execution, standards-review guidance, and project AGENTS.md authoring workflows.",
     "developerName": "Lscrapider",
     "category": "Developer Tools",
     "capabilities": [

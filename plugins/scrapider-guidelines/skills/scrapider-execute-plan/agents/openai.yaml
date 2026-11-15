@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scrapider Execute Plan"
+  short_description: "Execute an existing plan with subagents"
+  default_prompt: "Use $scrapider-execute-plan to run the selected Scrapider plan with subagents."

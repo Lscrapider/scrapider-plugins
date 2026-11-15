@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scrapider Write Plan"
+  short_description: "Write plans for subagent implementation"
+  default_prompt: "Use $scrapider-write-plan to prepare an execution plan for implementation by subagents."
