@@ -19,7 +19,7 @@ distinct responsibilities and omit routine host operations and generic fallback 
 | RTK command-output filtering | [RTK](retrieval.md#a7-rtk) | [RTK + Codegraph](retrieval.md#a8-codegraph-with-rtk); [RTK + gateway](retrieval.md#a11-codegraph-with-rtk-and-mcp-slim) |
 | MCP Slim and host tool discovery | [Gateway with selected services](retrieval.md#a9-mcp-slim-schema-gateway-with-selected-mcp-services) | [Gateway + Codegraph](retrieval.md#a10-codegraph-with-mcp-slim-schema-gateway); [gateway + RTK](retrieval.md#a11-codegraph-with-rtk-and-mcp-slim) |
 | Context7 | [External library docs](library-docs.md#context7) | [Graph + external docs](library-docs.md#codegraph-and-context7) |
-| `scrapider-write-plan` and `scrapider-execute-plan` | [Use as a pair for a Scrapider execution plan](planning-and-collaboration.md#scrapider-planning-and-execution) | Pair with the selected engineering guidance and any distinct requirements or evidence workflow. |
+| `scrapider-write-plan` and `scrapider-execute-plan` | [Use as a pair for a Scrapider execution plan](planning-and-collaboration.md#scrapider-planning-and-execution) | Follow the project's selected engineering guidance during implementation. |
 | Planning with Files | [Planning choices](planning-and-collaboration.md#planning) | [Durable notes + one execution plan](planning-and-collaboration.md#planning) |
 | OpenSpec | [Specification owner](planning-and-collaboration.md#planning) | [OpenSpec + distinct investigation notes](planning-and-collaboration.md#planning) |
 | Superpowers planning skills | [Paired writing-plans and executing-plans, only where permitted](planning-and-collaboration.md#planning) | Keep the pair as one plan owner; use a separate notes layer only for distinct evidence. |

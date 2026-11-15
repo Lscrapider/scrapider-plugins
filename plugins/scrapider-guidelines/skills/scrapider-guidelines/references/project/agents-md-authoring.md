@@ -19,8 +19,7 @@ Do not install capabilities, configure hosts, build indexes, register agents, or
 definitions, plan files, or companion project documents during authoring. These limits, and
 restrictions imposed only on the authoring run, concern this operation; do not turn them into
 permanent project policy. An explanation-only request does not authorize a file edit.
-Use existing project rules or the author's choices to establish which Scrapider capabilities the
-project adopts.
+Adopt Scrapider's coding rules or bundled agents only from existing project rules or the author's choice.
 Write host-specific tool-routing mandates only when the target project's instructions or author
 establish them; a requirement of the authoring host alone is not target-project policy.
 
@@ -90,11 +89,6 @@ After the author chooses, apply all agreed changes and their necessary cross-ref
 entries whose evaluation calls for no change. An answer about one category does not resolve the other
 open categories in a section-level refresh; continue their assessment and relay any necessary choices.
 
-When updating a standalone `scrapider-guidelines` entry for the plugin, carry forward the scope of
-the engineering skill. Offer the bundled pair as a separate workflow choice when the project needs
-durable handoffs to implementation subagents. See
-[Scrapider planning and execution](capability-recommendations.md#planning-and-execution).
-
 When authoring is delegated, the authoring agent assesses the project and formulates the recommendations
 and necessary questions. Send each question, its concrete options, and recommendation rationale to the
 primary agent for relay to the user; do not have the primary agent invent choices in advance or bypass
@@ -138,8 +132,6 @@ Scrapider is the selected standard, refer to the skill's built-in standards-revi
 dispatch rules once in its entry. Do not reproduce those rules in a priority or coding-workflow
 section, promise automatic skill loading, or add a functional reviewer to its built-in dispatch.
 Record an additional review policy only when the project or author actually selected it.
-Describe a selected planning workflow's delegation and review handoff in its skill entries. Use the
-collaboration section for roles the project has separately chosen.
 
 A combined entry must preserve each selected skill's use conditions and cooperation without repeating
 shared fields. For other cooperating capabilities, express their distinct responsibilities through
@@ -190,9 +182,8 @@ Available subagent tools, bundled roles, multiple project modules, and selecting
 not establish that choice. An unanswered offer creates no section or placeholder. Record only the
 chosen responsibilities and acceptance boundary; do not add a no-delegation rule merely because the
 author did not opt in.
-For ordinary collaboration, when selected roles are unavailable, map them to permitted native subagents
-or keep their responsibilities with the primary agent. For a selected planning workflow, use its own
-delegation and review requirements.
+When selected roles are not exposed by the host, retain the responsibilities and have the primary agent
+perform them or map them to available agents; do not leave work blocked on a role name.
 
 Keep a statement only if it changes how future work should be done. Use clear, action-oriented rules
 and brief module labels. Put selected capabilities in their section, business rules with business
@@ -307,10 +298,10 @@ instructions without rerunning this authoring workflow.
 ## Bundled Collaboration Roles
 
 Prefer existing user roles. After collaboration is selected, offer only the responsibilities the
-project needs from the following definitions. Read definitions on demand and verify the callable
-role names in the target host. If the host exposes plugin agents, use its registered names. For
-bundled definitions that need a native subagent or custom-agent mapping, see
-[Skills, Plugins, and Bundled Agents](capability-setup.md#skills-plugins-and-bundled-agents).
+project needs from the following definitions; read definitions on demand. In hosts that support
+plugin-provided agents, plugin installation registers these roles under the plugin's namespace.
+Loading the skill alone does not install or register agents. Selecting roles does not mean running
+all roles on every task.
 The bundled definitions do not pin a model. Preserve the host's model and reasoning inheritance
 unless the author or project explicitly selects an override; do not infer a model or host agent type
 from a role name or add model declarations to the target without that choice.
