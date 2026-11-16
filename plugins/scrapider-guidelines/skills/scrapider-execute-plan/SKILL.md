@@ -17,10 +17,16 @@ in the Plan, including pre-existing edits. On resumption, use its progress/evide
 outputs in the consuming checkout and that checks still apply. Resume unfinished work whose prerequisites
 are met; reopen only affected work when outputs or evidence no longer apply.
 
-Use the plan's `mode` to select the route below. Missing planning inputs can be repaired through
-`scrapider-write-plan`; direct work uses the ordinary workflow.
+Use the plan's `mode` to select the route below. An existing step or Brief with a usable result and
+applicable acceptance can serve as its delivery entry. Use `scrapider-write-plan` to resolve missing
+planning inputs. Direct work uses the ordinary workflow.
 
 ## Dispatch implementation
+
+Dispatch work against its recorded prerequisites. An agreed contract may support parallel work.
+Confirm any required implemented outputs in the consuming checkout. When several assignments contribute
+to one delivery, coordinate dependent work and conflicting writes and identify ready partial assignments
+where useful. Apply shared checks to the combined edits they require.
 
 ### Single plan
 
@@ -29,21 +35,19 @@ available inputs for partial assignments.
 
 ### Modular plan
 
-Use the total `PLAN.md` for routine coordination. Send implementers their assigned Brief paths,
-checkout, verified inputs and coordination constraints. They read the Briefs and their required links.
-Open a relevant Brief section when a discrepancy needs resolution.
-
-Release work against its recorded prerequisites. An agreed contract and an implemented upstream
-output are distinct inputs. Confirm required outputs in the consuming checkout, order conflicting
-writes, and identify ready steps for partial assignments. A grouped assignment starts when its
-external prerequisites are met; the assignee verifies internal outputs before consuming them.
+Dispatch from the total `PLAN.md` allocations. Send each implementer the allocation link, its Brief,
+checkout, available inputs and any shared-write coordination. The allocation defines the change scope
+and output, and the Brief supplies the implementation steps. Existing plans can link already defined
+scope into the total Plan. Resolve conflicting claims at that allocation before dispatching the
+affected edits. Implementers read their Brief and required links.
 
 ## Implement, verify and integrate
 
-The assigned steps and file actions define the implementation scope. Implementers verify acceptance
-under project rules and return completed steps, check results and evidence, remaining coverage and
-material deviations with reasons. Include scenario references where applicable. Required work outside
-those representative paths still needs verification.
+Implement within the single plan's assigned steps or the modular plan's allocation and linked Brief.
+Implementers perform their assigned checks under project rules and return completed steps, results
+and evidence, remaining coverage and material deviations with reasons. Include scenario references
+where applicable.
+Required work outside those representative paths still needs verification.
 
 Evidence identifies the code/configuration version or artifact checked, including relevant uncommitted
 changes, procedure and observed results. It must support the claimed boundary; a component check cannot
@@ -51,22 +55,24 @@ stand in for a connection it bypasses.
 Implementation and integration own these checks before review. Reuse applicable results and rerun
 affected checks after changes. Record unavailable required verification as an acceptance gap.
 
-When required planning inputs remain unavailable or checkout evidence invalidates the planned scope,
-ownership, behavior, contracts, dependencies or acceptance, implementers return the gap and affected steps.
-Hold that work while arranging the necessary revision through `scrapider-write-plan`; independent
-work can continue. The agent revising the plan maintains the affected Briefs/contracts and review
-inputs as well as the total Plan. The primary agent verifies the coordination changes before release.
+Report unavailable inputs and the work they affect. When requirements or checkout evidence invalidate
+a planned delivery, resolve the affected scope, ordering or acceptance through `scrapider-write-plan`.
+For example, if making an output usable requires changes assigned to a consumer waiting on that output,
+revise the delivery boundary. Independent work can continue. The agent revising the plan maintains
+the affected Briefs/contracts, review inputs and total Plan. The primary agent confirms the revised
+prerequisites before dispatching affected work.
 
-**Keep the total Plan synchronized.** Any Brief change affecting delivery, connections, prerequisites
-or acceptance must be reflected there in the same revision. Keep each material adjustment and reason
-beside the affected decision or step; other views link it. Routine implementation choices within the
-agreed scope need no change record. Do not rewrite acceptance to match an unintended implementation.
+**Maintain the allocation.** Work outside the allocation or changes to a Brief's scope, shared contract,
+dependencies or output go to the coordinator. Revise the total-Plan allocation and affected Briefs in
+the same revision before dispatching the changed work. Keep the reason beside the owning decision or
+assignment and link it from other views. Local implementation choices remain with the implementer.
+Acceptance continues to follow the requested behavior.
 
-At dispatch and on each return or block, update the single Plan's steps or modular index with state
-(pending, in progress, blocked or done), assignee, checkout/output reference, check evidence and remaining
-work or release conditions. Reuse common references; do not maintain a parallel progress log. Mark a
-step or Brief done only when its promised output is usable and its assigned checks have passed on that
-output, with evidence. Integration and review remain separate completion gates.
+At dispatch and on each return or block, update the single Plan's steps or modular delivery entry with
+state, assignee, checkout/output reference, check evidence and remaining work. Record completed contributions
+there. Mark the delivery available once the edits needed for its promised output are present in the
+consuming checkout and its assigned evidence supports that output. Final acceptance still depends on the
+applicable integration and review results.
 
 Assign responsibility for integrating outputs into the consuming/integration checkout and resolving
 shared writes. Confirm the integrated outputs before releasing consumers. Run the combined-output

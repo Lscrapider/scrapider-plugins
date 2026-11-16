@@ -1,0 +1,26 @@
+[
+  {
+    "arm": "scrapider-modular",
+    "documents": 6,
+    "bytes": 35939,
+    "lines": 285,
+    "local_link_refs": 40,
+    "unresolved_local_links": []
+  },
+  {
+    "arm": "scrapider-single",
+    "documents": 2,
+    "bytes": 29068,
+    "lines": 171,
+    "local_link_refs": 6,
+    "unresolved_local_links": []
+  },
+  {
+    "arm": "superpowers",
+    "documents": 1,
+    "bytes": 26388,
+    "lines": 196,
+    "local_link_refs": 2,
+    "unresolved_local_links": []
+  }
+]

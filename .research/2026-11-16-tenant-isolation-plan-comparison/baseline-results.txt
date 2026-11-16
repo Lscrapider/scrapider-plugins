@@ -1,0 +1,8 @@
+mvn -o -B -f backend/pom.xml -pl business/business-governance-pipeline,business/business-governance-execution -am -Dtest=PipelineLifecycleServiceImplTest,PipelineConfigurationServiceImplTest,ExecutionEventProcessorTest -Dsurefire.failIfNoSpecifiedTests=false test
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.806 s -- in com.orvx.business.governance.execution.processor.ExecutionEventProcessorTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.761 s -- in com.orvx.business.governance.pipeline.service.impl.PipelineConfigurationServiceImplTest
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.600 s -- in com.orvx.business.governance.pipeline.service.impl.PipelineLifecycleServiceImplTest
+[INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  11.936 s

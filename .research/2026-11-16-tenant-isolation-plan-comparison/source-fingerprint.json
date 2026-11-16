@@ -1,0 +1,20 @@
+{
+  "vcs": "working-tree snapshot (unborn Git branch)",
+  "file_count": 1190,
+  "sha256": "507bee13a41d22d54be9d20b35490b2f7f162d98d7e3be67bd9782797d5e0249",
+  "roots": [
+    "AGENTS.md",
+    "backend",
+    "scripts/java-sqls",
+    "worker"
+  ],
+  "extensions": [
+    "md",
+    "java",
+    "xml",
+    "sql",
+    "py",
+    "lua"
+  ],
+  "verified_after_comparison": true
+}

@@ -1,7 +1,8 @@
 # Single Plan
 
-Use task-specific content under the headings that apply. Complete the implementation and acceptance
-draft before selecting scenarios; record the walkthrough and resulting corrections before delivery.
+Use the headings that help present the already derived behavior and work. Give each assignment its
+start inputs, file actions and result together. If a file inventory helps navigation, link to the
+owning actions or make the inventory the write scope used by the steps.
 
 ```markdown
 ---
@@ -10,31 +11,19 @@ mode: single
 
 # <Change name>
 
-## File changes
-
-| Action | ID and exact project-relative path | Step IDs | Purpose |
-| --- | --- | --- | --- |
-| Modify | F01 `<existing file>` | <IDs> | <Change> |
-| Create | F02 `<new file>` | <IDs> | <Responsibility> |
-| Delete | F03 `<existing file>` | <IDs> | <Reason/replacement> |
-
-<Omit unused rows, or this section when actions are fully defined in their owning steps. With an
-inventory, steps reference IDs instead of repeating paths and purposes. Include affected callers;
-show moves as old path -> new path. Keep read-only evidence separate.>
-
 ## Outcome and scope
 
-<Requested behavior, constraints and boundaries. Link requirements to owning steps and acceptance;
-concise references or a small table are sufficient.>
+<Requested behavior, constraints and boundaries. Link material observable outcomes, including distinct
+failure and preservation cases, to their owning work and evidence. Use concise references where helpful.>
 
 **Execution context** <Fill at execution start: checkout and starting workspace baseline reference,
 including pre-existing edits.>
 
 ## Target behavior and contracts
 
-<Current -> target behavior and component responsibilities. Define the shared semantics the steps
-need, including relevant data ownership, transformations and outcomes. Link authoritative definitions;
-use tables or examples where they clarify the change.>
+<Current -> target behavior, component responsibilities and the paths that informed key decisions.
+Define the shared semantics the steps need, including relevant data ownership, transformations and
+outcomes. Link authoritative definitions and relevant scenarios. Use tables or examples where helpful.>
 
 <Pending decisions, if any: proposal, effects, affected steps and release evidence.>
 
@@ -45,20 +34,25 @@ and comparison check. Label observed results, existing assertions and source-der
 
 ## Steps
 
-- **T01 <Deliverable>**
-  - **Files** <Inventory IDs and target symbols; without an inventory, define actions, exact paths
-    and purpose here.>
-  - **Start when** <Ready, or links to required decisions, contracts and upstream outputs with release evidence;
-    distinguish approved decisions, defined contracts and implemented outputs.>
-  - **Implement** <Ordered changes and wiring using the linked contract.>
-  - **Verify** <Acceptance/check reference, local inputs and assertions if not defined below.>
-  - **Progress/evidence** Pending. <During execution: assignee, output/version reference, check evidence and
-    remaining work or release conditions; reuse the execution context unless the checkout differs.>
+### T01 <Result or contribution>
+
+- **Inputs** <Actual inputs needed to start this step. Link each prerequisite to its existing source,
+  agreed contract or producing step. Put read-only references here.>
+- **Files** <Owned Create / Modify / Delete actions, exact paths and affected symbols, including
+  callers. If an inventory owns an action, link the entry that defines this step's scope.>
+- **Implement** <Ordered changes and wiring using the linked contracts.>
+- **Output and verification** <What this step provides, who uses it and which delivery it contributes
+  to. Define a local check with any inputs it consumes, or link the applicable combined check.>
+- **Progress/evidence** Pending. <During execution, record assignee, output/version reference, check
+  evidence and remaining work. Reuse the execution context unless the checkout differs.>
 
 ## Acceptance
 
-- [ ] **V01 - <requirement/contract and owner>** <Command or reproducible procedure and setup> ->
-  <Expected result, boundary covered and evidence to collect.>
+<Define checks needing combined work here. Put later prerequisites with the check or activation that
+uses them. Link applicable local checks and reuse the expected observations in relevant scenarios.>
+
+- [ ] **<Descriptive outcome or boundary>** <Requirement link, owner, reproducible procedure and
+  setup for the combined result> -> <Expected observation and evidence to collect.>
 - **Gaps** <Missing coverage, authorization or environment, and the remaining acceptance condition.>
 - **Review** <Link REVIEW.md and its integration trigger when applicable.>
   <During execution, record returned findings here: finding reference -> disposition and reason or
@@ -66,14 +60,8 @@ and comparison check. Label observed results, existing assertions and source-der
 
 ## Representative scenarios
 
-- **C01** <Concrete input and trigger -> relevant processing -> observable result; steps/checks exercised.>
-
-## Static walkthrough
-
-| Scenario | Decisive source/contract anchors and intermediate values or states | Finding and resolution |
-| --- | --- | --- |
-| C01 | <Evidence supporting the proposed path> | <Connected, conditional on a named decision, or gap and affected work> |
-
-<Also confirm full requirement coverage. Scenarios sample that scope; the walkthrough records
-planning evidence, not runtime results. Apply corrections to the affected steps and checks.>
+- **C01** <Concrete input and starting state -> actual entry point and decisive operation, with source
+  or contract links -> observable result. For a refusal, show the guard and the effects it prevents.
+  Link the affected steps and checks and name any unresolved condition. Record observed execution
+  results with their checks.>
 ```

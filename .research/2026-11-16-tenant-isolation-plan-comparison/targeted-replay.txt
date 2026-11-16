@@ -1,0 +1,4 @@
+In-memory uniqueness probe (file_id): [(1, 'inserted'), (2, 'unique-violation'), (1, 'unique-violation')]
+In-memory uniqueness probe (tenant_id, file_id): [(1, 'inserted'), (2, 'inserted'), (1, 'unique-violation')]
+Static scheduling replay (as-written, no fixture): [['T01'], ['D1'], ['T02']]; pending {'T03': ['D2'], 'D2': ['T03'], 'T04': ['D2', 'D3'], 'D3': ['T04'], 'T05': ['D2', 'D3'], 'D4': ['T05'], 'T06': ['D2', 'D3', 'D4', 'D5', 'fixture'], 'D5': ['T06']}
+Static scheduling replay (named-upstream-outputs, no fixture): [['T01'], ['D1'], ['T02', 'T06-prepare'], ['T03', 'T04'], ['D2', 'D3'], ['T05'], ['D4']]; pending {'T06': ['fixture'], 'D5': ['T06']}
