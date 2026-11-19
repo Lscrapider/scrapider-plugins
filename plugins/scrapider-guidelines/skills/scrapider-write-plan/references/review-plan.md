@@ -11,7 +11,8 @@ by `scrapider-execute-plan` and the bundled reviewer definitions.
 ## Scope and inputs
 
 - **Scope** <Integrated change, checkout and comparison baseline; include all task-related changes.>
-- **Plan references** <Assigned Briefs/steps, file actions, requirements, contracts and acceptance.
+- **Plan references** <Brief allocations and implementation documents or single-plan steps, file actions,
+  requirements, contracts and acceptance.
   Link accepted adjustments and reasons at their owning decision/step; use the Plan's starting baseline
   to distinguish pre-existing edits.>
 - **Evidence** <Implementation/integration checks, code/configuration tested, results and gaps.

@@ -63,8 +63,8 @@ AGENTS.md authoring writes only the requested instruction file. It preserves pro
 
 ### Multi-agent execution plans
 
-- [**Write a plan**](plugins/scrapider-guidelines/skills/scrapider-write-plan/SKILL.md) with `$scrapider-write-plan`. Clear local changes use the ordinary workflow. For a durable handoff, write a single `PLAN.md` or a modular `PLAN.md` with implementation Briefs under `.scrapider/plan/YYYY-MM-DD-<feature-name>/` at the project root.
-- [**Execute a plan**](plugins/scrapider-guidelines/skills/scrapider-execute-plan/SKILL.md) with `$scrapider-execute-plan` and the plan path. The caller controls executor count and grouping. For modular work, the primary agent coordinates from `PLAN.md`, hands Brief paths to implementers, and reads the sibling `REVIEW.md` to dispatch the functional and standards reviews after integration. Reviewers return results directly.
+- [**Write a plan**](plugins/scrapider-guidelines/skills/scrapider-write-plan/SKILL.md) with `$scrapider-write-plan`. Clear local changes use the ordinary workflow. For a durable handoff, write a single `PLAN.md` or a modular plan under `.scrapider/plan/YYYY-MM-DD-<feature-name>/` at the project root. A modular plan groups work that can advance in parallel into `briefs/<brief-name>/` directories. Each Brief normally contains one `01-title.md`. Add numbered documents only when the workload and context needs require splitting a large assignment.
+- [**Execute a plan**](plugins/scrapider-guidelines/skills/scrapider-execute-plan/SKILL.md) with `$scrapider-execute-plan` and the plan path. The caller sets concurrency and, for single plans, decides how to group steps. For modular work, the primary agent runs ready work across Briefs in parallel. Within each Brief, it assigns documents in numeric order to separate implementation subagents, each completing its document's steps and checks before the next document starts. After integration, it reads the sibling `REVIEW.md` to dispatch functional and standards reviews. Reviewers return results directly.
 
 Both skills require a session where subagent delegation is available and permitted for the task. Select them only in such a session.
 

@@ -6,7 +6,7 @@ description: Requires an enabled, authorized subagent mode. Use to execute or re
 # Execute a Scrapider Plan
 
 The primary agent coordinates implementation, integration and review through the host's native
-subagents. The caller controls executor allocation and concurrency.
+subagents. The caller sets concurrency and, for single plans, decides how to group steps.
 
 ## Resolve the plan
 
@@ -25,8 +25,8 @@ planning inputs. Direct work uses the ordinary workflow.
 
 Dispatch work against its recorded prerequisites. An agreed contract may support parallel work.
 Confirm any required implemented outputs in the consuming checkout. When several assignments contribute
-to one delivery, coordinate dependent work and conflicting writes and identify ready partial assignments
-where useful. Apply shared checks to the combined edits they require.
+to one delivery, coordinate dependent work and conflicting writes. Apply shared checks to the combined
+edits they require.
 
 ### Single plan
 
@@ -35,15 +35,33 @@ available inputs for partial assignments.
 
 ### Modular plan
 
-Dispatch from the total `PLAN.md` allocations. Send each implementer the allocation link, its Brief,
-checkout, available inputs and any shared-write coordination. The allocation defines the change scope
-and output, and the Brief supplies the implementation steps. Existing plans can link already defined
-scope into the total Plan. Resolve conflicting claims at that allocation before dispatching the
-affected edits. Implementers read their Brief and required links.
+The primary agent dispatches one implementation subagent per ready implementation document from the
+total `PLAN.md` allocations. A Brief normally contains one document. Give the subagent its document,
+the Brief's allocation link, checkout, required contracts, available inputs and predecessor results.
+The subagent carries out all steps and local checks in that document.
+
+Run ready documents from different Briefs in parallel within available capacity and the caller's
+concurrency limit. Within each Brief, run numbered documents serially, with one active implementer at
+a time. After confirming the current document's output and assigned verification in the consuming
+checkout, dispatch a fresh subagent for the next document. Pass the relevant output reference,
+evidence and remaining conditions through the Plan's progress record. If a document is blocked,
+continue ready work in other Briefs.
+
+The allocation defines the change scope and output. An existing single-file Brief serves as one
+implementation document. Existing plans can link already defined scope into the total Plan. Resolve
+conflicting claims there before dispatching affected work. If the workload requires a different split,
+revise the allocation and affected documents through `scrapider-write-plan` before dispatching the
+revised assignments.
+
+Reuse a document's assigned implementer when resuming that document or routing its fixes. If that
+implementer is unavailable, confirm its writes have stopped, verify progress and assign the document's
+remaining work to one replacement. Coordinate fixes with any later work in the same Brief to preserve
+serial writes, and recheck affected downstream results before continuing.
 
 ## Implement, verify and integrate
 
-Implement within the single plan's assigned steps or the modular plan's allocation and linked Brief.
+Implement within the single plan's assigned steps or the assigned modular document and its Brief's
+allocation.
 Implementers perform their assigned checks under project rules and return completed steps, results
 and evidence, remaining coverage and material deviations with reasons. Include scenario references
 where applicable.
@@ -68,11 +86,12 @@ the same revision before dispatching the changed work. Keep the reason beside th
 assignment and link it from other views. Local implementation choices remain with the implementer.
 Acceptance continues to follow the requested behavior.
 
-At dispatch and on each return or block, update the single Plan's steps or modular delivery entry with
-state, assignee, checkout/output reference, check evidence and remaining work. Record completed contributions
-there. Mark the delivery available once the edits needed for its promised output are present in the
-consuming checkout and its assigned evidence supports that output. Final acceptance still depends on the
-applicable integration and review results.
+At dispatch and on each return or block, update the single Plan's steps or the assigned document's
+progress under its Brief in the modular Plan with state, assignee, checkout/output reference, check
+evidence and remaining work. Record completed contributions there. Mark the delivery available once
+the edits needed for its promised output are present in the consuming checkout and its assigned
+evidence supports that output. Final acceptance still depends on the applicable integration and review
+results.
 
 Assign responsibility for integrating outputs into the consuming/integration checkout and resolving
 shared writes. Confirm the integrated outputs before releasing consumers. Run the combined-output
@@ -84,15 +103,16 @@ After integration, the primary agent reads `REVIEW.md` for modular plans and sin
 review handoff, then prepares the scoped assignments. Modular plans use both roles below; single
 plans use the reviews specified by their handoff and applicable project rules.
 
-Supply the actual checkout and comparison baseline, relevant Plan sections and Briefs/steps, requirements and contracts,
-accepted plan adjustments, and verification results or gaps. Include the full task-related diff,
+Supply the actual checkout and comparison baseline, relevant Plan sections, Brief allocations and
+implementation documents or single-plan steps, requirements and contracts, accepted plan adjustments,
+and verification results or gaps. Include the full task-related diff,
 including relevant staged, unstaged and untracked changes. File inventories are review references,
 not a filter that excludes unplanned task-related changes.
 
 - **Functional review:** [scrapider-code-reviewer](../../agents/scrapider-code-reviewer.md) checks the
   implementation against requirements, contracts, planned file actions and acceptance. Include
   coverage outside sampled scenarios, unexplained plan/implementation differences and affected
-  Brief/total-Plan consistency.
+  consistency between implementation documents, Brief allocations and the total Plan.
 - **Standards review:** [scrapider-standards-reviewer](../../agents/scrapider-standards-reviewer.md) checks
   the same scope against applicable rules. Supply project instruction paths and the exact
   [Scrapider Guidelines directory](../scrapider-guidelines/SKILL.md); follow its

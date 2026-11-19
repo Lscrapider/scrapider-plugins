@@ -63,8 +63,8 @@ AGENTS.md 编写流程只修改指定的说明文件，保留项目惯例，不�
 
 ### 多 Agent 执行计划
 
-- 用 `$scrapider-write-plan` [编写计划](plugins/scrapider-guidelines/skills/scrapider-write-plan/SKILL.md)。简单明确的改动走常规流程。需要落盘交接时，在目标项目根目录的 `.scrapider/plan/YYYY-MM-DD-<feature-name>/` 写单份 `PLAN.md`，或写总 `PLAN.md` 加按模块组织的实施 Brief。
-- 用 `$scrapider-execute-plan` [执行计划](plugins/scrapider-guidelines/skills/scrapider-execute-plan/SKILL.md)，并指定计划路径。调用方决定 executor 的数量和分组。模块化计划由主 Agent 读总 Plan、交接实施 Brief 的路径，在集成后读取同级的 `REVIEW.md` 组织功能审核和规范审核。审核结果直接回传。
+- 用 `$scrapider-write-plan` [编写计划](plugins/scrapider-guidelines/skills/scrapider-write-plan/SKILL.md)。简单明确的改动走常规流程。需要落盘交接时，在目标项目根目录的 `.scrapider/plan/YYYY-MM-DD-<feature-name>/` 写单份 `PLAN.md` 或模块化计划。模块化计划将能够并行推进的工作分为 `briefs/<brief-name>/` 下的各份 Brief。每份 Brief 默认只放一份 `01-标题.md`，只有工作量和上下文负担确实过大时才拆成多份编号文档。
+- 用 `$scrapider-execute-plan` [执行计划](plugins/scrapider-guidelines/skills/scrapider-execute-plan/SKILL.md)，并指定计划路径。调用方设置并发数，并决定单文件计划的步骤分组。模块化计划由主 Agent 并行调度不同 Brief 中的就绪工作，同一 Brief 内按编号串行派发文档，每份文档交给一个独立的实施子 Agent。该 Agent 完成文档中的步骤和验证后，再派下一份文档。集成后读取同级的 `REVIEW.md` 组织功能审核和规范审核，结果直接回传。
 
 两项 Skill 都要求当前会话可用子 Agent，且任务允许委派。
 

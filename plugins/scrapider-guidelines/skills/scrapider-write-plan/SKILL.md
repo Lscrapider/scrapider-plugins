@@ -64,8 +64,7 @@ activity.
 
 Follow planned inputs back to their producers. If an input leads back to the work that needs it,
 identify an earlier result that can exist on its own or revise the work boundary. A shared delivery
-is the destination of its contributions. Order conflicting writes where needed. Executor allocation
-remains the caller's choice.
+is the destination of its contributions. Order conflicting writes where needed.
 
 ## Choose the plan format
 
@@ -73,7 +72,7 @@ remains the caller's choice.
 | --- | --- |
 | Clear, local work with an evident edit and check | Direct work with plan files only when a durable handoff is requested |
 | Work needing researched decisions, ordered implementation or a durable handoff that fits one document | `PLAN.md` using the [single plan template](references/single-plan.md) |
-| Work with substantial coordination across deliveries or assignments | Total `PLAN.md`, `briefs/<module>/<brief>.md` and sibling `REVIEW.md`; read the [modular templates](references/modular-plan.md) and [review template](references/review-plan.md) |
+| Work with substantial coordination across deliveries or assignments | Total `PLAN.md`, `briefs/<brief-name>/` directories and sibling `REVIEW.md`. Read the [modular templates](references/modular-plan.md) and [review template](references/review-plan.md). |
 
 Use `.scrapider/plan/YYYY-MM-DD-<feature-name>/` at the project root for new plans, with the caller's
 local creation date and a lowercase hyphenated name. Revise existing plans in their current directory.
@@ -108,22 +107,39 @@ Use project-relative source paths and resolve document links from the file conta
 In a single plan, define start inputs in the consuming steps and combined inputs at their checks or
 activation conditions.
 
-For modular work, establish the allocations in the total Plan before expanding Briefs. For each
-Brief, assign the responsibility, permitted change scope, required inputs and output used by other
-work. Allocate by the actual change, including shared data-access and infrastructure edits. Use file
-paths and affected symbols wherever targets are shared across contributions. Give an overlapping edit
-one owner. When different edits share a file, define their boundaries and any ordering or integration
-responsibility. Record cross-Brief dependencies, combined acceptance and activation in the total Plan.
+For modular work, establish the allocations in the total Plan before expanding Briefs. Each Brief is
+a coherent workstream that can advance in parallel with other Briefs from available inputs or agreed
+contracts. Give it a responsibility, permitted change scope, required inputs and output. Derive Brief
+boundaries from both responsibility and the opportunity for concurrent work. Keep a dependent sequence
+within one Brief. Record any later cross-Brief prerequisites at the document or check that consumes
+them, with combined acceptance and activation in the total Plan.
 
-Each Brief links its allocation and expands it into concrete targets, ordered edits and local checks.
-Keep shared contracts and cross-Brief inputs linked to their authoritative definitions. Implementation
-choices within that allocation belong in the Brief. A newly discovered change outside it goes back to
-the planning coordinator, who assigns the work in the total Plan and updates the affected Briefs in the
-same revision. The coordinator can refine allocations as evidence develops.
+Allocate by the actual change, including shared data-access and infrastructure edits. Use file paths
+and affected symbols wherever targets are shared across contributions. Give an overlapping edit one
+owner. When different edits share a file, define their boundaries and any ordering or integration
+responsibility.
+
+Place each Brief directly under `briefs/<brief-name>/` and link the directory from its total-Plan
+allocation. Default to one document named `01-<title>.md`, containing the related implementation tasks
+and their checks. Split only when the actual workload and context required are too large for one
+subagent to complete and verify reliably. Use workload and context needs to judge the split, with
+roughly 10 top-level steps as a sizing reference. Keep small, closely related tasks together.
+
+When a split is needed, use `01-<title>.md`, `02-<title>.md` and so on in the same directory. Each
+document is one complete assignment for a separate implementation subagent. Its steps are carried out
+together by that subagent. The documents run in numeric order, with a usable output and verification
+evidence at each handoff so the next subagent can continue from the recorded results.
+
+Each implementation document links its Brief's allocation and supplies its own inputs, concrete
+targets, ordered edits, local checks and output. Link shared contracts and cross-Brief inputs to their
+authoritative definitions. A newly discovered change outside the allocation goes back to the planning
+coordinator, who assigns the work in the total Plan and updates the affected documents in the same
+revision.
 
 Use the single Plan's steps or the modular delivery entry for execution state, assignee, output/version
-reference, evidence and remaining work. Fill these during execution and keep the starting checkout and
-baseline in the Plan. Record review dispositions in its existing Review entry.
+reference, evidence and remaining work. In modular plans, track these per implementation document
+within its Brief. Fill them during execution and keep the starting checkout and baseline in the Plan.
+Record review dispositions in its existing Review entry.
 
 Record a material adjustment and its reason at the owning decision, step or dependency. Changes to a
 modular assignment's scope, shared contract, inputs or output start at its total-Plan allocation, then
