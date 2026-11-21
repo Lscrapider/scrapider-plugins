@@ -1,8 +1,7 @@
 # Single Plan
 
-Use the headings that help present the already derived behavior and work. Give each assignment its
-start inputs, file actions and result together. If a file inventory helps navigation, link to the
-owning actions or make the inventory the write scope used by the steps.
+Use the headings that help present the work. Give each step a stable ID such as `T01`, with its
+inputs, file actions and completion criteria together.
 
 ```markdown
 ---
@@ -13,11 +12,8 @@ mode: single
 
 ## Outcome and scope
 
-<Requested behavior, constraints and boundaries. Link material observable outcomes, including distinct
-failure and preservation cases, to their owning work and evidence. Use concise references where helpful.>
-
-**Execution context** <Fill at execution start: checkout and starting workspace baseline reference,
-including pre-existing edits.>
+<Requested behavior, constraints and boundaries. Link the required outcomes, including relevant
+failure and preservation cases, to their steps and acceptance criteria.>
 
 ## Target behavior and contracts
 
@@ -25,7 +21,7 @@ including pre-existing edits.>
 Define the shared semantics the steps need, including relevant data ownership, transformations and
 outcomes. Link authoritative definitions and relevant scenarios. Use tables or examples where helpful.>
 
-<Pending decisions, if any: proposal, effects, affected steps and release evidence.>
+<If a decision is still needed, give the proposal, its effects and the steps that depend on it.>
 
 ## Preservation baseline
 
@@ -41,27 +37,21 @@ and comparison check. Label observed results, existing assertions and source-der
 - **Files** <Owned Create / Modify / Delete actions, exact paths and affected symbols, including
   callers. If an inventory owns an action, link the entry that defines this step's scope.>
 - **Implement** <Ordered changes and wiring using the linked contracts.>
-- **Output and verification** <What this step provides, who uses it and which delivery it contributes
-  to. Define a local check with any inputs it consumes, or link the applicable combined check.>
-- **Progress/evidence** Pending. <During execution, record assignee, output/version reference, check
-  evidence and remaining work. Reuse the execution context unless the checkout differs.>
+- **Output and verification** <What this step provides and who uses it. Give the local check and
+  expected observation, or link the applicable combined check.>
 
 ## Acceptance
 
 <Define checks needing combined work here. Put later prerequisites with the check or activation that
 uses them. Link applicable local checks and reuse the expected observations in relevant scenarios.>
 
-- [ ] **<Descriptive outcome or boundary>** <Requirement link, owner, reproducible procedure and
-  setup for the combined result> -> <Expected observation and evidence to collect.>
-- **Gaps** <Missing coverage, authorization or environment, and the remaining acceptance condition.>
-- **Review** <Link REVIEW.md and its integration trigger when applicable.>
-  <During execution, record returned findings here: finding reference -> disposition and reason or
-  fix/recheck evidence; impact, owner and next action for open/deferred items.>
+- **<Outcome or boundary>** <Requirement, relevant setup, action and expected observable result.>
+- **Prerequisites** <Any authorization or environment required for this check.>
+- **Review** <Link REVIEW.md when applicable.>
 
 ## Representative scenarios
 
 - **C01** <Concrete input and starting state -> actual entry point and decisive operation, with source
   or contract links -> observable result. For a refusal, show the guard and the effects it prevents.
-  Link the affected steps and checks and name any unresolved condition. Record observed execution
-  results with their checks.>
+  Link the affected steps and checks and name any unresolved condition.>
 ```

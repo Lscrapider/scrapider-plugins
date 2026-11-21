@@ -1,12 +1,18 @@
 ---
 name: scrapider-write-plan
-description: Requires an enabled, authorized subagent mode. Use to write or revise a Scrapider execution plan when a coding change needs a durable handoff to implementation subagents.
+description: Requires an enabled, authorized subagent mode. Use to prepare or refine a draft Scrapider plan when a coding change needs a durable handoff to implementation subagents.
 ---
 
 # Write a Scrapider Execution Plan
 
-Deliver a researched implementation handoff. Implementation and post-integration review belong to
-`scrapider-execute-plan` when execution is requested.
+Write `PLAN.md` so the primary agent can dispatch the full scope from it. In a modular plan,
+choose Brief boundaries so module implementers can work in parallel using available inputs or
+agreed interfaces. Give each module one Brief with all the steps its implementer needs to deliver it.
+
+**Confirmation freezes the plan and its companion documents.** During execution, only the
+primary agent may correct an implementation instruction that project facts prove wrong. Replace
+only that instruction in its original location, within the agreed scope, contracts and acceptance
+criteria. [Plan execution](../scrapider-execute-plan/SKILL.md) governs dispatch and review.
 
 ## Derive the change from behavior
 
@@ -27,8 +33,8 @@ Trace intended success and the material refusals the behavior requires. Use the 
 satisfy unrelated prerequisites so a refusal reaches the decisive guard. Identify the observable
 rejection and the effects that the guard prevents. A sampled new capability should have a case that
 distinguishes it from the previous behavior. Use the same inputs and expected observations when
-defining the checks that exercise these paths. Give other material outcomes and failure, recovery or
-compatibility cases owning work or an existing path and appropriate evidence, or name the specific gap.
+defining the checks that exercise these paths. Account for other required outcomes, including
+failure, recovery or compatibility cases, in the assignments and acceptance criteria.
 
 Record the contracts the derived work shares, including relevant fields, types, units, transformations,
 results and errors. For persisted or versioned data, establish which source governs later reads and
@@ -40,10 +46,9 @@ a concrete proposal, its effects, affected work and evidence needed to decide or
 alternatives when they change the decision. A choice that requires an exception to a constraint stays
 pending. Scope the dependency to the work that actually requires a decision.
 
-For behavior being replaced or migrated, provide a reusable before-change baseline: source or test
-anchor, inputs/configuration, expected results and a comparison method. Include exceptions that
-affect compatibility. Distinguish observed results, existing assertions and source-derived expectations;
-schedule any required runtime capture before replacement.
+For behavior being replaced or migrated, identify the source or existing check, inputs, expected
+results and comparison that establish the baseline. Include exceptions that affect compatibility.
+Distinguish observed results from source-derived expectations.
 
 ## Derive assignments and deliveries
 
@@ -51,7 +56,7 @@ Group the required edits into assignments and name what each provides and who us
 deliveries by what can become usable together in the intended checkout. For a changed interface,
 data shape or protocol, trace the producer and the existing consumers present at each proposed
 handoff. Put changes that must land together in the same delivery, even
-when they have separate file owners or Briefs. Split where the earlier state supports the consumers
+when they have separate file owners or Briefs. An earlier delivery must support the consumers
 present at that point. Use a temporary compatibility path only for an in-scope consumer or rollout
 that requires coexistence. Place the combined check after the edits it depends on.
 
@@ -72,11 +77,12 @@ is the destination of its contributions. Order conflicting writes where needed.
 | --- | --- |
 | Clear, local work with an evident edit and check | Direct work with plan files only when a durable handoff is requested |
 | Work needing researched decisions, ordered implementation or a durable handoff that fits one document | `PLAN.md` using the [single plan template](references/single-plan.md) |
-| Work with substantial coordination across deliveries or assignments | Total `PLAN.md`, `briefs/<brief-name>/` directories and sibling `REVIEW.md`. Read the [modular templates](references/modular-plan.md) and [review template](references/review-plan.md). |
+| Module assignments that can advance in parallel and need coordinated delivery | Total `PLAN.md`, one `briefs/<brief-name>.md` per module and sibling `REVIEW.md`. Use the [modular templates](references/modular-plan.md) and [review template](references/review-plan.md). |
 
 Use `.scrapider/plan/YYYY-MM-DD-<feature-name>/` at the project root for new plans, with the caller's
-local creation date and a lowercase hyphenated name. Revise existing plans in their current directory.
-A single plan gets a sibling `REVIEW.md` when the request, project rules or
+local creation date and a lowercase hyphenated name. Refine existing drafts in their current directory.
+For a single plan, use the [review template](references/review-plan.md) for a sibling `REVIEW.md`
+when the request, project rules or
 [standards review criteria](../scrapider-guidelines/references/shared/standards-review.md#applicability--primary-agent)
 call for review.
 
@@ -86,72 +92,28 @@ Use the chosen format to present the behavior, assignments and order already der
 findings into the handoff with verified source paths and symbols. Mark proposed files or symbols as new.
 Use project-relative source paths and resolve document links from the file containing them.
 
-- Give each planned **Modify / Create / Delete** action one authoritative owner. Define the exact path,
-  target and purpose. In a single plan, keep the allocation at the owning step or in an inventory it
-  uses as its write scope. In a modular plan, the total Plan allocates the change scope to Briefs as
-  described below. Show moves as old path -> new path. Put read-only dependencies with the inputs or
-  source anchors.
-- Beside each assignment, supply the inputs, directly linked requirements and contracts, ordered edits,
-  and usable output or contribution. Define path aliases where used. Repeated edits can share a procedure
-  with a complete target list. Resolve missing contract details or name the evidence needed by the
-  affected work.
-- Define each check once, where its behavior can be exercised, with an owner, reproducible setup and
-  expected observation. Link to it by the outcome or boundary it establishes, such as building the
-  changed callers or recovering a run. Keep it with the assigned work for local evidence, or with
-  acceptance for evidence that requires combined outputs. Reuse existing checks that reach the
-  claimed outcome. Record unavailable required verification with the concrete case and missing prerequisite.
-- Present the representative paths with the source anchors and decisive steps that informed the plan.
-  Link the affected work and checks. Record any open condition and distinguish source-derived reasoning
-  from observed test results.
-
-In a single plan, define start inputs in the consuming steps and combined inputs at their checks or
-activation conditions.
-
-For modular work, establish the allocations in the total Plan before expanding Briefs. Each Brief is
-a coherent workstream that can advance in parallel with other Briefs from available inputs or agreed
-contracts. Give it a responsibility, permitted change scope, required inputs and output. Derive Brief
-boundaries from both responsibility and the opportunity for concurrent work. Keep a dependent sequence
-within one Brief. Record any later cross-Brief prerequisites at the document or check that consumes
-them, with combined acceptance and activation in the total Plan.
-
-Allocate by the actual change, including shared data-access and infrastructure edits. Use file paths
-and affected symbols wherever targets are shared across contributions. Give an overlapping edit one
-owner. When different edits share a file, define their boundaries and any ordering or integration
-responsibility.
-
-Place each Brief directly under `briefs/<brief-name>/` and link the directory from its total-Plan
-allocation. Default to one document named `01-<title>.md`, containing the related implementation tasks
-and their checks. Split only when the actual workload and context required are too large for one
-subagent to complete and verify reliably. Use workload and context needs to judge the split, with
-roughly 10 top-level steps as a sizing reference. Keep small, closely related tasks together.
-
-When a split is needed, use `01-<title>.md`, `02-<title>.md` and so on in the same directory. Each
-document is one complete assignment for a separate implementation subagent. Its steps are carried out
-together by that subagent. The documents run in numeric order, with a usable output and verification
-evidence at each handoff so the next subagent can continue from the recorded results.
-
-Each implementation document links its Brief's allocation and supplies its own inputs, concrete
-targets, ordered edits, local checks and output. Link shared contracts and cross-Brief inputs to their
-authoritative definitions. A newly discovered change outside the allocation goes back to the planning
-coordinator, who assigns the work in the total Plan and updates the affected documents in the same
-revision.
-
-Use the single Plan's steps or the modular delivery entry for execution state, assignee, output/version
-reference, evidence and remaining work. In modular plans, track these per implementation document
-within its Brief. Fill them during execution and keep the starting checkout and baseline in the Plan.
-Record review dispositions in its existing Review entry.
-
-Record a material adjustment and its reason at the owning decision, step or dependency. Changes to a
-modular assignment's scope, shared contract, inputs or output start at its total-Plan allocation, then
-flow into the affected Briefs. Update related checks and `REVIEW.md` in the same revision before affected
-work is dispatched or resumed. Routine implementation detail stays in the steps.
+- Give each planned file change one owner. Identify the operation, path, target and purpose, including both
+  paths for a move. When assignments share a file, specify the affected symbols and write order.
+- In a single plan, give each step a stable ID, required inputs, file actions, ordered edits and
+  an observable result. Place prerequisites for a combined check with that check.
+- In a modular plan, give each module a stable Brief ID in the total `PLAN.md`. Link the Brief
+  and state its goal, write scope, dependencies, output and completion criteria. Identify what
+  can start together, what needs a prior output, and which changes must be integrated together.
+- In the Brief, link its allocation and the authoritative shared contracts. Put the module's concrete
+  targets, implementation details and ordered steps here. A repeated edit can share one procedure
+  with a complete target list. One implementer should be able to deliver the whole Brief from it.
+- Define each necessary check once. Put local checks with the implementation and combined checks
+  with integration. Give the relevant input, prerequisite and observable result. Reuse checks that
+  exercise the behavior and follow project rules and user authorization for verification.
+- Give reviewers the scope, requirements and questions specific to this change in `REVIEW.md` when
+  applicable. Link shared definitions and the relevant acceptance criteria at their source.
 
 ## Finish the handoff
 
-Make the plan usable from the assignments and their links. The coordinator can see which work can
-start, what each delivery will make available and what evidence is still needed.
+Before confirmation, check that the assignments cover every requested outcome and that their
+dependencies and completion criteria are usable. Identify any missing prerequisite for the
+affected assignment.
 
-When the handoff's complexity or uncertainty warrants independent assessment, use the
-[`scrapider-solution-expert`](../../agents/scrapider-solution-expert.md) subagent. Correct confirmed
-gaps, synchronize the affected documents and recheck changed paths before delivery. Link the resulting
-plan and identify any remaining implementation prerequisites.
+When the draft's complexity or uncertainty warrants independent assessment, use the
+[`scrapider-solution-expert`](../../agents/scrapider-solution-expert.md) subagent. Resolve confirmed
+gaps in the draft and return the plan path and any outstanding decisions.

@@ -19,18 +19,18 @@ Use the pair with one authoritative `PLAN.md` for the change.
 [Plan writing](../../../../scrapider-write-plan/SKILL.md) ·
 [Plan execution](../../../../scrapider-execute-plan/SKILL.md)
 
-- **`scrapider-write-plan`** — Prepare or revise a plan for implementation subagents.
+- **`scrapider-write-plan`** — Prepare a draft plan for implementation subagents.
   - **Scenario** Use it when a change needs a durable handoff and the session supports and authorizes
     subagent delegation.
-  - **Boundary** It prepares or revises `PLAN.md`, with implementation Briefs for modular plans
-    and a review handoff when required.
+  - **Boundary** It prepares `PLAN.md`, one Brief per module in modular plans, and task-specific
+    review assignments when required. Confirmation freezes the plan.
 
 - **`scrapider-execute-plan`** — Execute or resume a Scrapider plan.
   - **Scenario** Use it to execute or resume a Scrapider plan in a session that supports and
     authorizes subagent delegation.
-  - **Boundary** It coordinates implementation, verification, integration, and review from the
-    same plan. For modular plans, the primary agent uses `REVIEW.md` to dispatch both functional
-    and standards review.
+  - **Boundary** The primary agent dispatches each whole Brief from the total plan. Implementers
+    return results directly. After all Briefs are implemented and integrated, the primary agent
+    uses `REVIEW.md` to dispatch functional and standards review.
 
 ### Cross-session evidence with one task plan
 
