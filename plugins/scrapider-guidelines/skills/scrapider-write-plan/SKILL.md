@@ -10,10 +10,12 @@ between assignments before presenting the plan for confirmation.** In a modular 
 Brief boundaries so implementers can work in parallel using available inputs or agreed interfaces.
 Give each module one Brief with all the steps its implementer needs to deliver it.
 
-**Confirmation freezes the plan and its companion documents.** During execution, only the
-primary agent may correct an implementation instruction that project facts prove wrong. Replace
-only that instruction in its original location, within the agreed scope, contracts and acceptance
-criteria. [Plan execution](../scrapider-execute-plan/SKILL.md) governs dispatch and review.
+**Confirmation freezes the plan and its companion documents. Treat them as read-only inputs
+to every assignment.** Never make updating them an implementation, verification or delivery
+step. Only the primary agent may correct an implementation instruction that project facts
+prove wrong. Replace only that instruction in its original step, within the agreed scope,
+contracts and acceptance criteria.
+[Plan execution](../scrapider-execute-plan/SKILL.md) governs that correction, dispatch and review.
 
 ## Derive the change from behavior
 
@@ -37,11 +39,12 @@ distinguishes it from the previous behavior. Use the same inputs and expected ob
 defining the checks that exercise these paths. Account for other required outcomes, including
 failure, recovery or compatibility cases, in the assignments and acceptance criteria.
 
-For each shared interface, identify the producer and its consumers. Link an existing type or
-schema that defines the contract, or define it once in the plan. For a call, give the exact
-signature, including parameter names and types and the return type. For APIs and messages,
-specify the request, response or event shape down to the names, types and nesting of the fields
-the other side uses. Include relevant units, transformations and error behavior. For persisted
+For each shared interface, identify the producer and its consumers. Link both sides to the
+existing type or schema that defines it, or define it once in the plan. For a direct call
+across assignments, give the callable name, parameter names and types, and return type.
+For APIs and messages, specify the names, types and nesting of the fields exchanged on the
+wire. This definition governs both implementations. Each module chooses its internal
+representation. Include relevant units, transformations and error behavior. For persisted
 or versioned data, establish which source governs later reads and updates.
 
 Distinguish observed behavior, accepted decisions and proposals. A material unresolved choice needs
@@ -106,18 +109,22 @@ Use project-relative source paths and resolve document links from the file conta
   Put the module's concrete targets, implementation details and ordered steps here. A repeated edit
   can share one procedure with a complete target list. One implementer should be able to deliver
   the whole Brief from it.
-- Define each necessary check once. Put local checks with the implementation and combined checks
-  with integration. Give the relevant input, prerequisite and observable result. Reuse checks that
-  exercise the behavior and follow project rules and user authorization for verification.
+- Give each assignment the checks that establish its own delivery. Define each check of joint
+  behavior once in the plan's integration or acceptance section, with the participating
+  outputs, required environment and expected result. Contributing assignments link to it.
+  Reuse existing checks that exercise the behavior and follow project rules and user
+  authorization for verification.
 - Give reviewers the scope, requirements and questions specific to this change in `REVIEW.md` when
   applicable. Link shared definitions and the relevant acceptance criteria at their source.
 
 ## Finish the handoff
 
-Before confirmation, the plan author checks each consumer's expected inputs against the
-producer's declared outputs. Compare signatures, types, field names and nesting. Resolve missing
-or conflicting interface details in the draft. If an interface depends on a business decision
-from the user, obtain it before finalizing that interface.
+Before confirmation, follow each shared interface through the implementation steps on both
+sides. Match the arguments the caller will pass to the signature the provider will implement.
+For APIs and messages, trace each field the consumer needs to its location and type in the
+shared payload and to the value the producer can supply at that point. Resolve missing inputs
+and conflicting uses in the draft so both sides can implement from the same definition. If an
+interface depends on a business decision from the user, obtain it before finalizing it.
 
 Check that the assignments cover every requested outcome and that their dependencies and
 completion criteria are usable. Identify any missing prerequisite for the affected assignment.
@@ -125,3 +132,47 @@ completion criteria are usable. Identify any missing prerequisite for the affect
 When the draft's complexity or uncertainty warrants independent assessment, use the
 [`scrapider-solution-expert`](../../agents/scrapider-solution-expert.md) subagent. Resolve confirmed
 gaps in the draft and return the plan path and any outstanding decisions.
+
+### Prompt for a fresh execution conversation
+
+When the plan is ready for confirmation, include one copy-ready execution prompt in the same
+reply. Put the prompt in its own code block, in the user's language, for use after confirmation.
+Address the new primary agent directly and use the actual plan and conversation.
+
+1. **Identify the work.** Name the intended outcome, the actual checkout and the exact path to
+   the frozen `PLAN.md`. Use the receiving host's invocation for `scrapider-execute-plan`
+   when known (such as `$scrapider-execute-plan` in Codex). Otherwise name the skill and its
+   `scrapider-guidelines` plugin in words.
+2. **Route assignments according to the plan's mode.** The primary agent reads the
+   project-wide instructions and uses the allocations and dependencies in `PLAN.md`. In modular
+   mode, direct it to send each ready Brief's ID and path to one implementer for the whole
+   assignment. The implementer reads the Brief and applicable module guides. The primary agent
+   consults a Brief when a particular dispatch decision needs it. In single mode, direct the
+   primary agent to assign the plan's step IDs using any grouping the caller supplied.
+3. **Choose what to carry over.** Keep schedules, contracts, steps and check commands in the
+   documents that define them. Point to a specific section only if it helps the recipient
+   start. Include a fact from the old conversation only if it changes execution and the new
+   session cannot recover it from the project or plan. Preserve the scope of each user-granted
+   permission or restriction and identify any user edits to protect. Omit this part when empty.
+4. **Specify the delivery.** Include combined checks when the plan defines them, at their
+   planned integration point. Include final review when required, after the full implementation
+   is integrated. Ask for a direct reply with delivered and outstanding functionality, actual
+   check and review results, and checks still awaiting a test environment. The user makes
+   the final business acceptance decision.
+
+For example, this modular handoff carries one fact from the planning conversation. The user
+identified an existing edit to `ui/theme.css` to preserve.
+
+```text
+In /work/shop, use scrapider-guidelines:scrapider-execute-plan to implement order import.
+The confirmed plan is .scrapider/plan/2026-05-01-order-import/PLAN.md.
+
+Read the project-wide instructions and dispatch from the frozen plan. Send each ready Brief
+by ID and path to one implementer, who reads that Brief and its module guides, completes it
+and replies to you with the result. Preserve my existing edit to ui/theme.css.
+
+Run the integration checks whose prerequisites are available. Once all Briefs are delivered
+and integrated, use REVIEW.md for final review. Reply here with what was delivered, what
+remains, the actual results and any checks deferred to the test environment. I will handle
+business acceptance.
+```

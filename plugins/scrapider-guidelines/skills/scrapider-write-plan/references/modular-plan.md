@@ -2,7 +2,7 @@
 
 The primary agent dispatches from `PLAN.md`. Give each module a stable Brief ID and a link to
 `briefs/<brief-name>.md`. The module's implementer reads that Brief for all implementation steps.
-Define shared contracts once and link to them from each consumer.
+Define shared contracts once and link to the same definition from the producer and each consumer.
 
 ## Example layout
 
@@ -48,8 +48,8 @@ data ownership and cross-module guarantees where relevant.>
   and ordering where modules share a file.>
 - **Dependencies** <What can start immediately, which contract or upstream output is needed,
   and when it is needed.>
-- **Completion criteria** <Observable behavior for the whole Brief, including what its consumers
-  can rely on. Link applicable requirements.>
+- **Completion criteria** <The whole Brief's observable output, what its consumers can rely
+  on and the checks that establish this module's part. Link applicable requirements.>
 
 <Give each additional module its own ID, Brief and allocation.>
 
@@ -63,8 +63,9 @@ the requested behavior. Include any environment or activation prerequisite with 
 
 ## Module Brief
 
-For the example above, write `briefs/order-import.md`. Use its ID from the total plan.
-Include the applicable interface entries for this module.
+For the example above, write `briefs/order-import.md` using its ID from the total plan.
+The implementer reads the Brief, completes its steps and replies directly to the primary agent
+in the host conversation with the functionality delivered, check results and any blockers.
 
 ```markdown
 # B01 Order import
@@ -84,7 +85,8 @@ covering all steps through delivery.>
 
 ## Verification
 
-<For each necessary local check, give the input or action and the expected observation.
-For a migration, include the behavior to preserve and how to compare it. Link any combined
-check to its definition in the total plan.>
+<For each check the implementer can run on this module, give the input or action and the
+expected observation. For a migration, include the behavior to preserve and how to compare it.
+For behavior verified across modules, link to the corresponding check under Integration and
+acceptance.>
 ```

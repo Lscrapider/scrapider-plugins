@@ -5,15 +5,15 @@ description: Requires an enabled, authorized subagent mode. Use to execute or re
 
 # Execute a Scrapider Plan
 
-**The confirmed plan and its companion documents are frozen.** Only the primary agent may correct
-an implementation instruction that project facts prove wrong. The implementer sends the passage,
-the relevant fact and the proposed correction directly to the primary agent and continues
-work within the agreed scope where the solution is clear.
-The primary agent verifies the proposed approach, replaces only the incorrect instruction in
-its original step with that approach, and keeps the discussion and follow-up with affected
-implementers in the host conversation. The agreed scope, contracts and acceptance criteria still apply.
-If the work calls for a change to those terms, take the decision to the user and continue
-unaffected work.
+**The confirmed plan and its companion documents are frozen, read-only inputs to every
+assignment. This boundary takes precedence over any step that asks to update them.**
+Only the primary agent may correct an implementation instruction that project facts prove
+wrong. The implementer sends the step, conflicting fact and proposed correction directly to the
+primary agent and continues unaffected work. Within the agreed scope, contracts and acceptance
+criteria, the primary agent verifies the correction, replaces only the incorrect instruction in
+its original step and sends the confirmed approach back to the original implementer to carry out.
+Keep the discussion and follow-up with affected implementers in the host conversation. If a
+correction would change the scope, contracts or acceptance criteria, take the decision to the user.
 
 **Deliver all planned functionality before final review.** The primary agent dispatches from
 `PLAN.md`. One implementation subagent owns each whole Brief through delivery. Keep ready work
