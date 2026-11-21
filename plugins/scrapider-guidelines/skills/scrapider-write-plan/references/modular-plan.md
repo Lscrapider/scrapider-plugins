@@ -34,8 +34,9 @@ required outcomes, including failure cases and existing behavior to preserve.>
 
 ## Shared contracts
 
-<Agreed interfaces, data ownership and cross-module guarantees. Link existing definitions.
-Identify any decision the user still needs to make and which work depends on it.>
+<Name the producer and consumers of each shared interface. Link its existing definition or
+specify its exact signature or payload here, including field names, types and nesting. Include
+data ownership and cross-module guarantees where relevant.>
 
 ## Module assignments
 
@@ -63,6 +64,7 @@ the requested behavior. Include any environment or activation prerequisite with 
 ## Module Brief
 
 For the example above, write `briefs/order-import.md`. Use its ID from the total plan.
+Include the applicable interface entries for this module.
 
 ```markdown
 # B01 Order import
@@ -71,8 +73,11 @@ For the example above, write `briefs/order-import.md`. Use its ID from the total
 
 ## Inputs and implementation
 
-<Link the shared contracts and source locations the implementer needs. Describe the local
-implementation in order, covering all steps through delivery.>
+- **Consumes** <Producing assignment and link to the agreed interface this module uses.>
+- **Produces** <Consuming assignments and link to the agreed interface this module provides.>
+
+<Give other necessary inputs and source locations. Describe the local implementation in order,
+covering all steps through delivery.>
 
 1. <Name the files and symbols to change and the behavior the change must produce.>
 2. <Describe the next edit and how it connects to the preceding result or an existing caller.>

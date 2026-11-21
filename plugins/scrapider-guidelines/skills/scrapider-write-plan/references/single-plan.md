@@ -18,8 +18,8 @@ failure and preservation cases, to their steps and acceptance criteria.>
 ## Target behavior and contracts
 
 <Current -> target behavior, component responsibilities and the paths that informed key decisions.
-Define the shared semantics the steps need, including relevant data ownership, transformations and
-outcomes. Link authoritative definitions and relevant scenarios. Use tables or examples where helpful.>
+For interfaces shared by steps, link the authoritative definition or give the exact signature
+or payload shape here. Include relevant data ownership, transformations and outcomes.>
 
 <If a decision is still needed, give the proposal, its effects and the steps that depend on it.>
 
@@ -32,13 +32,13 @@ and comparison check. Label observed results, existing assertions and source-der
 
 ### T01 <Result or contribution>
 
-- **Inputs** <Actual inputs needed to start this step. Link each prerequisite to its existing source,
-  agreed contract or producing step. Put read-only references here.>
+- **Consumes** <Link required inputs to their sources. For an interface supplied by another
+  step, name the producer and link the agreed signature or data shape. Put read-only references here.>
 - **Files** <Owned Create / Modify / Delete actions, exact paths and affected symbols, including
   callers. If an inventory owns an action, link the entry that defines this step's scope.>
 - **Implement** <Ordered changes and wiring using the linked contracts.>
-- **Output and verification** <What this step provides and who uses it. Give the local check and
-  expected observation, or link the applicable combined check.>
+- **Produces** <What this step provides and which steps use it. Link the agreed interface when shared.>
+- **Verify** <Give the local check and expected observation, or link the applicable combined check.>
 
 ## Acceptance
 

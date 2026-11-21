@@ -5,9 +5,10 @@ description: Requires an enabled, authorized subagent mode. Use to prepare or re
 
 # Write a Scrapider Execution Plan
 
-Write `PLAN.md` so the primary agent can dispatch the full scope from it. In a modular plan,
-choose Brief boundaries so module implementers can work in parallel using available inputs or
-agreed interfaces. Give each module one Brief with all the steps its implementer needs to deliver it.
+Write `PLAN.md` so the primary agent can dispatch the full scope from it. **Settle interfaces
+between assignments before presenting the plan for confirmation.** In a modular plan, choose
+Brief boundaries so implementers can work in parallel using available inputs or agreed interfaces.
+Give each module one Brief with all the steps its implementer needs to deliver it.
 
 **Confirmation freezes the plan and its companion documents.** During execution, only the
 primary agent may correct an implementation instruction that project facts prove wrong. Replace
@@ -36,10 +37,12 @@ distinguishes it from the previous behavior. Use the same inputs and expected ob
 defining the checks that exercise these paths. Account for other required outcomes, including
 failure, recovery or compatibility cases, in the assignments and acceptance criteria.
 
-Record the contracts the derived work shares, including relevant fields, types, units, transformations,
-results and errors. For persisted or versioned data, establish which source governs later reads and
-updates. Keep each detailed contract in its owning section and link its consumers. Use tables,
-signatures, formulas, examples or code where they resolve consequential ambiguity.
+For each shared interface, identify the producer and its consumers. Link an existing type or
+schema that defines the contract, or define it once in the plan. For a call, give the exact
+signature, including parameter names and types and the return type. For APIs and messages,
+specify the request, response or event shape down to the names, types and nesting of the fields
+the other side uses. Include relevant units, transformations and error behavior. For persisted
+or versioned data, establish which source governs later reads and updates.
 
 Distinguish observed behavior, accepted decisions and proposals. A material unresolved choice needs
 a concrete proposal, its effects, affected work and evidence needed to decide or release it. Include
@@ -99,9 +102,10 @@ Use project-relative source paths and resolve document links from the file conta
 - In a modular plan, give each module a stable Brief ID in the total `PLAN.md`. Link the Brief
   and state its goal, write scope, dependencies, output and completion criteria. Identify what
   can start together, what needs a prior output, and which changes must be integrated together.
-- In the Brief, link its allocation and the authoritative shared contracts. Put the module's concrete
-  targets, implementation details and ordered steps here. A repeated edit can share one procedure
-  with a complete target list. One implementer should be able to deliver the whole Brief from it.
+- In the Brief, link its allocation and the definitions of the interfaces it consumes and produces.
+  Put the module's concrete targets, implementation details and ordered steps here. A repeated edit
+  can share one procedure with a complete target list. One implementer should be able to deliver
+  the whole Brief from it.
 - Define each necessary check once. Put local checks with the implementation and combined checks
   with integration. Give the relevant input, prerequisite and observable result. Reuse checks that
   exercise the behavior and follow project rules and user authorization for verification.
@@ -110,9 +114,13 @@ Use project-relative source paths and resolve document links from the file conta
 
 ## Finish the handoff
 
-Before confirmation, check that the assignments cover every requested outcome and that their
-dependencies and completion criteria are usable. Identify any missing prerequisite for the
-affected assignment.
+Before confirmation, the plan author checks each consumer's expected inputs against the
+producer's declared outputs. Compare signatures, types, field names and nesting. Resolve missing
+or conflicting interface details in the draft. If an interface depends on a business decision
+from the user, obtain it before finalizing that interface.
+
+Check that the assignments cover every requested outcome and that their dependencies and
+completion criteria are usable. Identify any missing prerequisite for the affected assignment.
 
 When the draft's complexity or uncertainty warrants independent assessment, use the
 [`scrapider-solution-expert`](../../agents/scrapider-solution-expert.md) subagent. Resolve confirmed

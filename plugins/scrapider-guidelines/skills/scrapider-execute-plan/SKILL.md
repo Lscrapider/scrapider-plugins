@@ -9,8 +9,9 @@ description: Requires an enabled, authorized subagent mode. Use to execute or re
 an implementation instruction that project facts prove wrong. The implementer sends the passage,
 the relevant fact and the proposed correction directly to the primary agent and continues
 work within the agreed scope where the solution is clear.
-The primary agent verifies the correction, edits only that passage in its original location and
-informs affected implementers. The agreed scope, contracts and acceptance criteria still apply.
+The primary agent verifies the proposed approach, replaces only the incorrect instruction in
+its original step with that approach, and keeps the discussion and follow-up with affected
+implementers in the host conversation. The agreed scope, contracts and acceptance criteria still apply.
 If the work calls for a change to those terms, take the decision to the user and continue
 unaffected work.
 
@@ -26,12 +27,15 @@ dispatch. Confirm the consuming checkout, the comparison baseline and any pre-ex
 so the task's changes can be identified later. Use the plan's `mode` to assign work. Direct
 work uses the project's ordinary workflow.
 
-- **Modular plan.** From the total plan, give the implementer the Brief ID and its published
-  path, the checkout and any inputs already delivered by other modules. All implementation
-  material at that path belongs to this assignment. The implementer follows it through every
-  step and local check. Dispatch ready Briefs in parallel within the caller's concurrency limit
-  and order conflicting writes. An agreed interface may be enough to start. If the plan calls
-  for an implemented dependency, confirm the output in the consuming checkout.
+- **Modular plan.** Use the total plan's allocations to identify ready Briefs. Consult the Briefs
+  as needed for a dispatch decision, such as checking whether proposed edits overlap. Give the
+  implementer its Brief ID, published path and checkout. Add context it cannot get from the
+  Brief and its links, such as pre-existing edits to preserve, the scope of a user authorization,
+  or an upstream result now available. Point to the relevant section for instructions already
+  in the Brief. The implementer reads the whole assignment at that path and completes all its
+  steps and local checks. Dispatch ready Briefs in parallel within the caller's concurrency
+  limit and order conflicting writes. An agreed interface may be enough to start. If the plan
+  calls for an implemented dependency, confirm the output in the consuming checkout.
 - **Single plan.** Follow the caller's grouping of step IDs and concurrency limit. Give each
   implementer `PLAN.md`, its assigned IDs, the checkout and available inputs.
 
