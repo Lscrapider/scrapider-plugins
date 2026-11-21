@@ -5,15 +5,19 @@ description: Requires an enabled, authorized subagent mode. Use to execute or re
 
 # Execute a Scrapider Plan
 
-**The confirmed plan and its companion documents are frozen, read-only inputs to every
-assignment. This boundary takes precedence over any step that asks to update them.**
-Only the primary agent may correct an implementation instruction that project facts prove
-wrong. The implementer sends the step, conflicting fact and proposed correction directly to the
-primary agent and continues unaffected work. Within the agreed scope, contracts and acceptance
-criteria, the primary agent verifies the correction, replaces only the incorrect instruction in
-its original step and sends the confirmed approach back to the original implementer to carry out.
-Keep the discussion and follow-up with affected implementers in the host conversation. If a
-correction would change the scope, contracts or acceptance criteria, take the decision to the user.
+**The confirmed plan and its companion documents are read-only inputs except when the primary
+agent corrects a step or implementation detail that project facts prove wrong.**
+The implementer reports the step, conflicting fact and proposed correction directly to the
+primary agent and continues unaffected work. The primary agent checks the facts against the
+agreed scope, contracts and acceptance criteria. If the instruction is correct, the implementer
+makes the code conform to it. If the proposed correction would change the agreed terms, take
+that decision to the user.
+
+For a verified error within those terms, the primary agent edits the original step or its
+implementation details in place, replacing only the incorrect part with the correct wording
+and adding nothing else.
+Send the corrected instruction back to the original implementer and keep the discussion with
+affected implementers in the host conversation.
 
 **Deliver all planned functionality before final review.** The primary agent dispatches from
 `PLAN.md`. One implementation subagent owns each whole Brief through delivery. Keep ready work
@@ -27,15 +31,16 @@ dispatch. Confirm the consuming checkout, the comparison baseline and any pre-ex
 so the task's changes can be identified later. Use the plan's `mode` to assign work. Direct
 work uses the project's ordinary workflow.
 
-- **Modular plan.** Use the total plan's allocations to identify ready Briefs. Consult the Briefs
-  as needed for a dispatch decision, such as checking whether proposed edits overlap. Give the
-  implementer its Brief ID, published path and checkout. Add context it cannot get from the
-  Brief and its links, such as pre-existing edits to preserve, the scope of a user authorization,
-  or an upstream result now available. Point to the relevant section for instructions already
-  in the Brief. The implementer reads the whole assignment at that path and completes all its
-  steps and local checks. Dispatch ready Briefs in parallel within the caller's concurrency
-  limit and order conflicting writes. An agreed interface may be enough to start. If the plan
-  calls for an implemented dependency, confirm the output in the consuming checkout.
+- **Modular plan.** Use the total plan's allocations and dependencies to identify ready Briefs.
+  Consult the relevant section of a Brief only when needed to resolve a specific dispatch
+  decision. Give the implementer its Brief ID, published path and checkout. Add only context it
+  needs beyond the Brief and its links. Preserve the scope of user authorizations, identify
+  existing edits to protect and pass along upstream results as needed. For instructions already
+  in the Brief, point to the relevant section. The implementer reads the whole assignment at
+  that path and completes all its steps and local checks. Dispatch ready Briefs in parallel
+  within the caller's concurrency limit and order conflicting writes. An agreed interface may
+  be enough to start. If the plan calls for an implemented dependency, confirm the output in
+  the consuming checkout.
 - **Single plan.** Follow the caller's grouping of step IDs and concurrency limit. Give each
   implementer `PLAN.md`, its assigned IDs, the checkout and available inputs.
 

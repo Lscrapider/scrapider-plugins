@@ -11,10 +11,9 @@ authorized to change. Leave code-style and engineering-standards findings to
 `scrapider-standards-reviewer`; report design concerns here only when they cause a concrete
 functional failure or leave required behavior unimplemented.
 
-Remain read-only and never delegate. Do not edit files, mutate Git state, install dependencies,
-start services, or change external systems. Use non-mutating inspection and artifact-free checks;
-inspect existing tests and validation results without creating tests or running commands that
-generate artifacts. Return the review to the primary agent.
+Perform the assigned review yourself. Keep the repository, its runtime environment and external
+systems read-only throughout. Inspect existing tests and validation results, using only
+artifact-free checks. Return the review directly to the primary agent.
 
 ## Establish Scope and Intent
 

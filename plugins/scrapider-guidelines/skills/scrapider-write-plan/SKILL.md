@@ -10,11 +10,10 @@ between assignments before presenting the plan for confirmation.** In a modular 
 Brief boundaries so implementers can work in parallel using available inputs or agreed interfaces.
 Give each module one Brief with all the steps its implementer needs to deliver it.
 
-**Confirmation freezes the plan and its companion documents. Treat them as read-only inputs
-to every assignment.** Never make updating them an implementation, verification or delivery
-step. Only the primary agent may correct an implementation instruction that project facts
-prove wrong. Replace only that instruction in its original step, within the agreed scope,
-contracts and acceptance criteria.
+**The confirmed plan and its companion documents are read-only inputs except when the primary
+agent corrects a step or implementation detail that project facts prove wrong.** Within the
+agreed scope, contracts and acceptance criteria, the primary agent replaces only the incorrect
+part in place with the correct wording.
 [Plan execution](../scrapider-execute-plan/SKILL.md) governs that correction, dispatch and review.
 
 ## Derive the change from behavior
@@ -24,13 +23,10 @@ requested outcomes, material behavior to preserve and constraints that shape the
 applicable parts of existing specifications. Inspect the actual entry points, affected callers, module
 dependencies and existing checks where they determine the result or constrain the approach.
 
-Use representative inputs and existing state to work out consequential behavior before defining
-assignments. Follow the actual entry point to the operation that decides the result, then work out
-what must change for the intended outcome to follow. For example, when scoping a lookup turns a hit
-into a miss, follow the miss through record creation and the uniqueness rules the write encounters.
-Derive the necessary edits together, accounting for concurrent writes, old records and existing writers
-where relevant. Choose an approach that fits the observed caller and module boundaries and the request's
-constraints.
+Before defining assignments, follow representative inputs from the actual entry point through
+the operation that decides the result and its downstream effects. Plan the necessary edits
+together, accounting for existing data and changes other callers can make before or during the
+operation. Choose an approach that fits the caller and module boundaries and the request's constraints.
 
 Trace intended success and the material refusals the behavior requires. Use the actual input shape and
 satisfy unrelated prerequisites so a refusal reaches the decisive guard. Identify the observable
@@ -61,10 +57,9 @@ Distinguish observed results from source-derived expectations.
 Group the required edits into assignments and name what each provides and who uses it. Define
 deliveries by what can become usable together in the intended checkout. For a changed interface,
 data shape or protocol, trace the producer and the existing consumers present at each proposed
-handoff. Put changes that must land together in the same delivery, even
-when they have separate file owners or Briefs. An earlier delivery must support the consumers
-present at that point. Use a temporary compatibility path only for an in-scope consumer or rollout
-that requires coexistence. Place the combined check after the edits it depends on.
+handoff. Put changes that must land together in the same delivery, even when they have separate
+file owners or Briefs. Each delivery must support the consumers active at that point in the
+intended checkout or rollout. Place the combined check after the edits it depends on.
 
 Name the inputs each activity actually needs and link their sources. An input may come from an
 existing fact, an agreed contract, a specific planned output or an external condition. Derive the order
@@ -121,9 +116,11 @@ Use project-relative source paths and resolve document links from the file conta
 
 Before confirmation, follow each shared interface through the implementation steps on both
 sides. Match the arguments the caller will pass to the signature the provider will implement.
-For APIs and messages, trace each field the consumer needs to its location and type in the
-shared payload and to the value the producer can supply at that point. Resolve missing inputs
-and conflicting uses in the draft so both sides can implement from the same definition. If an
+For APIs and messages, trace each field from the value the producer can supply at send time
+to its location in the shared payload and its use by the consumer. Establish the wire type,
+whether the field is required and when the receiver applies its value. Verify these details
+against the existing sending and receiving code where available. Resolve missing inputs and
+conflicting uses in the draft so both sides can implement from the same definition. If an
 interface depends on a business decision from the user, obtain it before finalizing it.
 
 Check that the assignments cover every requested outcome and that their dependencies and
@@ -149,19 +146,17 @@ Address the new primary agent directly and use the actual plan and conversation.
    assignment. The implementer reads the Brief and applicable module guides. The primary agent
    consults a Brief when a particular dispatch decision needs it. In single mode, direct the
    primary agent to assign the plan's step IDs using any grouping the caller supplied.
-3. **Choose what to carry over.** Keep schedules, contracts, steps and check commands in the
-   documents that define them. Point to a specific section only if it helps the recipient
-   start. Include a fact from the old conversation only if it changes execution and the new
-   session cannot recover it from the project or plan. Preserve the scope of each user-granted
-   permission or restriction and identify any user edits to protect. Omit this part when empty.
+3. **Choose what to carry over.** Refer to a section of the project or plan only when it helps
+   the recipient start. Carry over a fact from the planning conversation only if it changes
+   execution and the new session cannot recover it from those sources. Preserve the scope of
+   the user's permissions and limits and identify any user edits that need protection.
 4. **Specify the delivery.** Include combined checks when the plan defines them, at their
    planned integration point. Include final review when required, after the full implementation
    is integrated. Ask for a direct reply with delivered and outstanding functionality, actual
    check and review results, and checks still awaiting a test environment. The user makes
    the final business acceptance decision.
 
-For example, this modular handoff carries one fact from the planning conversation. The user
-identified an existing edit to `ui/theme.css` to preserve.
+Example handoff for a modular order-import plan
 
 ```text
 In /work/shop, use scrapider-guidelines:scrapider-execute-plan to implement order import.
@@ -169,7 +164,7 @@ The confirmed plan is .scrapider/plan/2026-05-01-order-import/PLAN.md.
 
 Read the project-wide instructions and dispatch from the frozen plan. Send each ready Brief
 by ID and path to one implementer, who reads that Brief and its module guides, completes it
-and replies to you with the result. Preserve my existing edit to ui/theme.css.
+and replies to you with the result.
 
 Run the integration checks whose prerequisites are available. Once all Briefs are delivered
 and integrated, use REVIEW.md for final review. Reply here with what was delivered, what

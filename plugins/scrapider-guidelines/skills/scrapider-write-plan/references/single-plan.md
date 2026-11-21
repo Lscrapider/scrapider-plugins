@@ -34,8 +34,8 @@ and comparison check. Label observed results, existing assertions and source-der
 
 - **Consumes** <Link required inputs to their sources. For an interface supplied by another
   step, name the producer and link the agreed signature or data shape. Put read-only references here.>
-- **Files** <Owned Create / Modify / Delete actions, exact paths and affected symbols, including
-  callers. If an inventory owns an action, link the entry that defines this step's scope.>
+- **Files** <For each file this step creates, modifies or deletes, give the action, exact
+  path and affected symbols. Include the callers this step updates.>
 - **Implement** <Ordered changes and wiring using the linked contracts.>
 - **Produces** <What this step provides and which steps use it. Link the agreed interface when shared.>
 - **Verify** <Give the local check and expected observation, or link the applicable combined check.>

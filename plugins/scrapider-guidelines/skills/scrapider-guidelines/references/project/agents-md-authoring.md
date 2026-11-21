@@ -189,18 +189,13 @@ Keep a statement only if it changes how future work should be done. Use clear, a
 and brief module labels. Put selected capabilities in their section, business rules with business
 rules, and all selected subagent roles in the collaboration section. Keep development conventions,
 execution requirements, and language rules distinct when the source already separates them.
-Route document reading by the task's affected areas; do not require every task to read all project
-overviews or product documents unless that is an existing project rule or an explicit author choice.
-Read the root README when module ownership or entry points remain unclear; do not require it on every task.
+Route document reading by the task's affected areas, applicable project rules and the author's
+explicit choices. Use the root README when module ownership or entry points need clarification.
 
 When project orientation is useful, briefly identify the top-level modules and their responsibilities
-in the appropriate existing section or introduction; this does not require a project-structure heading.
-State the module-reading requirement once, in one short sentence: before working in a module, read its
-README and applicable `AGENTS.md` instructions. Make it apply to any affected module rather than
-enumerating selected module names again. Let each module README provide further reading guidance;
-do not expand the root rule into a reading catalog, a module-to-README table, repeated paths, or an
-explanation of which kinds of documents to read next. Do not invent missing README files or write them
-during this operation.
+in an existing section or the introduction. State one reading rule for all modules. Before working
+in an affected module, read its README if present and the applicable `AGENTS.md` instructions.
+Follow the module README's own pointers for further reading.
 
 Keep detailed module structure, history, architecture, and protocols in the corresponding README or
 module documentation. Keep selected capability duties, workflows, collaboration, author constraints,
